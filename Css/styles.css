@@ -844,28 +844,94 @@ html body {
 .header_view_cart {
     width: 100%;
     margin-top: 50px;
-    
+
 }
+
 .frame_view_cart {
     background-color: white;
-    padding: 20px;
+    padding: 15px;
+    width: 550px;
+    height: auto;
 }
+
 .center_view_cart {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .introduce_view_cart {
     margin-bottom: 10px;
     text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
 }
+
+.frame_view_cart .hollow_cart {
+    text-align: center;
+    padding: 150px 0;
+}
+
 .frame_view_cart table thead tr th {
     border: 1px solid black;
     padding: 5px;
 }
+
 .frame_view_cart table tbody tr .name_product {
     padding: 20px;
-    width: 30%;
+    width: 70%;
+}
+
+.frame_view_cart .product_quantity {
+    width: 60px;
+    text-align: center;
+    /*border-radius: 20px;*/
+    padding: 5px;
+}
+
+.frame_view_cart .form_quantity {
+    width: 20%;
+}
+
+.frame_view_cart .update_quantity {
+    padding: 0px 16px;
+    /*border-radius: 20px;*/
+}
+
+.frame_view_cart .delete_product {
+    border: 1px solid black;
+    padding: 10px;
+    background-color: yellow;
+}
+
+.frame_view_cart .delete_product a {
+    text-decoration: none;
+    color: black;
+}
+
+.frame_view_cart table {
+    border-bottom: 1px solid black;
+}
+
+.frame_view_cart .total_product {
+    font-size: 20px;
+    width: 50%;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.frame_view_cart .checkout a {
+    text-decoration: none;
+    padding: 5px;
+    background-color: tomato;
+    color: white;
+}
+.frame_view_cart .checkout {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
 
 /*Xu li checkout*/

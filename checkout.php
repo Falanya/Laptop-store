@@ -88,13 +88,13 @@ if(isset($_POST['name'])){
                                     <td><img src="./img/<?php echo $values['image'] ?>" width="150px" height="150px"></td>
                                     <td><?php echo $values['name'] ?></td>
                                     <td><?php echo $values['quantity'] ?></td>
-                                    <td><?php echo $values['sale_price'] ?>.000 VNĐ</td>
-                                    <td><?php echo number_format($values['sale_price'] * $values['quantity'] * 1000) ?>,000 VNĐ</td>
+                                    <td><?php echo $values['sale_price'] ?>.000₫</td>
+                                    <td><?php echo number_format($values['sale_price'] * $values['quantity'] * 1000) ?>,000₫</td>
                                 </tr>
                             <?php endforeach; ?>
                             <tr>
                                 <td>Tổng tiền</td>
-                                <td colspan="6" class="text-center big-info"><?php echo number_format(total_price($cart) * 1000) ?>,000 VNĐ</td>
+                                <td colspan="6" class="text-center big-info"><?php echo number_format(total_price($cart) * 1000) ?>,000₫</td>
                             </tr>
                         </tbody>
                     </table>
