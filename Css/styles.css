@@ -873,8 +873,13 @@ html body {
 }
 
 .frame_view_cart table thead tr th {
-    border: 1px solid black;
     padding: 5px;
+    text-align: center;
+}
+
+.frame_view_cart table tbody tr td {
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 .frame_view_cart table tbody tr .name_product {
@@ -935,4 +940,76 @@ html body {
 }
 
 /*Xu li checkout*/
+.header_checkout {
+    display: flex;
+    justify-content: space-evenly;
+}
+.info_user {
+    padding: 20px;
+    background-color: white;
+    margin-top: 20px;
+}
+.header_checkout .form-group label {
+    display: block;
+    font-weight: bold;
+    margin: 2px;
+}
+
+.header_checkout .form-group input,
+.header_checkout .form-group textarea {
+    display: block;
+}
+.header_checkout .form-group input {
+    width: 350px;
+    padding: 10px;
+}
+.header_checkout .form-group textarea {
+    width: 350px;
+    padding: 10px;
+    height: 200px;
+}
+.header_checkout .introduce_order,
+.header_checkout .introduce_info {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+.header_checkout .info_order {
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+    height: auto;
+}
+.header_checkout .info_order table thead tr th {
+    padding: 5px;
+    text-align: center;
+}
+.header_checkout .info_order table tbody tr td {
+    text-align: center;
+    padding-bottom: 10px;
+}
+.header_checkout .name_product {
+    width: 50%;
+}
+.header_checkout table {
+    border-bottom: 1px solid black;
+}
+.header_checkout .total_product {
+    font-size: 20px;
+    width: 50%;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.header_checkout .submit_checkout {
+    padding: 10px;
+    background-color: tomato;
+    border: none;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+}
+.header_checkout button {
+    margin-left: 200px;
+    margin-top: 10px;
+}
 /*Ket thuc checkout*/

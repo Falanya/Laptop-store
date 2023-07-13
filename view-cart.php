@@ -66,7 +66,7 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
                         </tbody>
                     </table>
                     <div class="total">
-                        <h1 class="total_product">Tổng tiền <?php echo number_format(total_price($cart) * 1000) ?>,000₫</h1>
+                        <p class="total_product">Tổng tiền <?php echo number_format(total_price($cart) * 1000) ?>,000₫</p>
                         <!--<td colspan="6" class="text-center big-info"><?php echo number_format(total_price($cart) * 1000) ?>,000₫</td>-->
                     </div>
                     <div>
