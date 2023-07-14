@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2023 at 12:03 AM
+-- Generation Time: Jul 14, 2023 at 11:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -67,7 +67,9 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `id_users`, `note`, `status`, `address`, `sdt`) VALUES
 (1, 7, 'Hàng dễ vỡ', '', 'Hà Thanh 1, Phường Ninh Đa, Thị Xã Ninh Hòa, Khánh Hòa', '12412343124'),
-(2, 8, 'Hàng dễ vỡ', '', 'Hồ Chí Minh', '214134');
+(2, 8, 'Hàng dễ vỡ', '', 'Hồ Chí Minh', '214134'),
+(3, 8, '', '', '', ''),
+(4, 8, 'Hàng dễ vỡ', '', '12412412', '3123124');
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,11 @@ INSERT INTO `orders_detail` (`id_order`, `id_product`, `quantity`, `price`) VALU
 (1, 11, '1', 27.990),
 (1, 12, '2', 37.990),
 (2, 12, '1', 37.990),
-(2, 13, '1', 16.990);
+(2, 13, '1', 16.990),
+(3, 11, '1', 27.990),
+(3, 12, '1', 37.990),
+(3, 13, '1', 16.990),
+(4, 13, '1', 16.990);
 
 -- --------------------------------------------------------
 
@@ -204,7 +210,7 @@ ALTER TABLE `hang`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product`
