@@ -6,13 +6,31 @@ include './cart-function.php';
 $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 //$user = $_SESSION['user'];
 
-$sql = "SELECT * FROM product Order by id DESC";
+$sql = "SELECT * FROM product";
 $result = mysqli_query($conn, $sql);
 
 $sql1 = "SELECT * FROM hang";
 $result1 = mysqli_query($conn, $sql1);
 
-$cart = (isset($_SESSION['cart']))? $_SESSION['cart'] : [];
+//Tính số bản ghi của bảng product
+$total_table = mysqli_num_rows($result);
+
+//Thiết lập số bảng ghi trên một trang
+$limit = 50;
+
+//Lấy trang hiện tại
+$cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
+
+//Tính số trang
+$page = ceil($total_table / $limit);
+
+//Tính start
+$start = ($cr_page - 1) * $limit;
+
+//Query sử dụng limit
+$result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $start,$limit");
+
+$cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 
 ?>
 
@@ -76,13 +94,18 @@ $cart = (isset($_SESSION['cart']))? $_SESSION['cart'] : [];
         <div class="page_number">
             <div class="number">
                 <ul>
-                    <li class="number1"><a href="#"></a><i class="fas fa-chevron-left"></i></li>
-                    <li class="number1"><a href="#">1</a></li>
-                    <li class="number1"><a href="#">2</a></li>
+                    <?php if ($cr_page - 1 > 0) { ?>
+                        <li class="number1"><a href="home.php?page=<?php echo $cr_page - 1 ?>"><i class="fas fa-chevron-left"></i></a></li>
+                    <?php } ?>
+                    <!--<li class="number1"><a href="#">2</a></li>
                     <li class="number1"><a href="#">3</a></li>
-                    <li style="border: none;">. . .</li>
-                    <li class="number1"><a href="#">9</a></li>
-                    <li class="number1"><a href="#"></a><i class="fas fa-chevron-right"></i></li>
+                    <li class="number1"><a href="#">4</a></li>-->
+                    <?php for ($i = 1; $i <= $page; $i++) { ?>
+                        <li class="number1 <?php echo (($cr_page == $i) ? 'active' : '') ?>"><a href="home.php?page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                    <?php } ?>
+                    <?php if ($cr_page + 1 <= $page) { ?>
+                        <li class="number1"><a href="home.php?page=<?php echo $cr_page + 1 ?>"><i class="fas fa-chevron-right"></i></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>

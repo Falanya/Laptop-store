@@ -369,6 +369,10 @@ html body {
     margin: 10px;
 }
 
+.page_number .active {
+    background-color: tomato;
+}
+
 /*Ket thuc contact*/
 
 /*Xu ly helps*/

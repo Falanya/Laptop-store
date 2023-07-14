@@ -105,7 +105,7 @@ if (isset($_POST['name'])) {
     <?php } else { ?>
         <div class="require_login">
             <div class="frame_require_login">
-                <strong>Vui lòng đăng nhập để đặt hàng</strong> <a href="./login.php?action=checkout">Login</a>
+                <strong>Vui lòng đăng nhập để đặt hàng</strong> <a style="text-decoration: none;font-weight: 600; font-size: 17px;" href="./login.php?action=checkout">Đăng nhập</a>
             </div>
         </div>
     <?php } ?>
