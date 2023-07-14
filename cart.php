@@ -30,7 +30,7 @@ $item = [
     'image' => $product['image'],
     //'price' => $product['price'],
     'sale_price' => $product['sale_price'],
-    'quantity' => $quantity
+    'quantity' => $quantity,
 ];
 
 if ($action == 'add') {
@@ -47,9 +47,11 @@ if($action == 'delete'){
     unset($_SESSION['cart'][$id]);
 }
 
-header('location: view-cart.php');
-echo "<pre>";
-print_r($_SESSION['cart']);
+$duongdan = ($action == 'delete') ? 'view-cart.php' : $_SERVER['HTTP_REFERER'];
+header("location: $duongdan");
+exit;
+//echo "<pre>";
+//print_r($_SESSION['cart']);
 
 //Thêm mới vào giỏ hàng
 
