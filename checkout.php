@@ -93,8 +93,8 @@ if (isset($_POST['name'])) {
                         </tbody>
                     </table>
                     <div class="total_product">
-                            <p>Tổng tiền <?php echo number_format(total_price($cart) * 1000) ?>,000₫</p>
-                    </div>  
+                        <p>Tổng tiền <?php echo number_format(total_price($cart) * 1000) ?>,000₫</p>
+                    </div>
                     <div>
                         <button class="submit_checkout">Đặt hàng</button>
                     </div>
@@ -104,7 +104,9 @@ if (isset($_POST['name'])) {
         </form>
     <?php } else { ?>
         <div class="require_login">
-            <strong>Vui lòng đăng nhập để đặt hàng</strong> <a href="./login.php?action=checkout">Login</a>
+            <div class="frame_require_login">
+                <strong>Vui lòng đăng nhập để đặt hàng</strong> <a href="./login.php?action=checkout">Login</a>
+            </div>
         </div>
     <?php } ?>
     <?php include './footer.php'; ?>

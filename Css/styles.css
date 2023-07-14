@@ -124,8 +124,8 @@ html body {
     border-radius: 50%;
     background-color: yellow;
     text-align: center;
-    top: 11%;
-    right: 13.7%;
+    top: 10.5%;
+    right: 14.1%;
     z-index: 10;
 }
 
@@ -882,6 +882,11 @@ html body {
     padding-bottom: 10px;
 }
 
+.frame_view_cart table tbody tr td img {
+    width: 150px; 
+    height: 150px;
+}
+
 .frame_view_cart table tbody tr .name_product {
     padding: 20px;
     width: 70%;
@@ -1012,4 +1017,18 @@ html body {
     margin-left: 200px;
     margin-top: 10px;
 }
+
+.require_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.require_login .frame_require_login {
+    margin-top: 20px;
+    padding: 130px 20px 20px 20px;
+    background-color: white;
+    height: 300px;
+}
+
 /*Ket thuc checkout*/

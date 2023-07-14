@@ -58,6 +58,10 @@
     .header_accout .dropdown-menu {
         width: 90px;
     }
+    .number_cart {
+        top: 3%;
+        right: 10%;
+    }
 
     /*Xu li search*/
     #search_text {

@@ -48,7 +48,7 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
                                 <tr>
                                     <!--<td><?php //echo $key++ 
                                             ?></td>-->
-                                    <td><img src="./img/<?php echo $values['image'] ?>" width="150px" height="150px"></td>
+                                    <td><img src="./img/<?php echo $values['image'] ?>"></td>
                                     <td class="name_product"><?php echo $values['name'] ?></td>
                                     <td>
                                         <form class="form_quantity" action="./cart.php">
