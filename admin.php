@@ -137,10 +137,10 @@ $onlineUsers = $rowOnlineUsers['online_users']
         </div>
         <div class="right_content">
             <div class="thongke">
-                <?php echo $totalOrders ?>
-                <?php echo $totalProducts ?>
-                <?php echo $totalUsers ?>
-                <?php echo $onlineUsers ?>
+                <p>Tổng số đơn hàng: <?php echo $totalOrders ?></p>
+                <p>Tổng số sản phẩm: <?php echo $totalProducts ?></p>
+                <p>Tổng số người dùng: <?php echo $totalUsers ?></p>
+                <p>Số người dùng đang trực tuyến: <?php echo $onlineUsers ?></p>
             </div>
             <div class="content_manager">
                 <?php if (isset($_GET['type'])) {
