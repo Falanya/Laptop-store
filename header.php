@@ -34,7 +34,7 @@
                     <li class="dropdown" id="dropdownn">
                         <img class="img_user" src="./img/<?php echo $user['avatar'] ?>">
                         <p class="dropdown-toggle" data-toggle="dropdown"><?php echo $user['name'] ?><b class="caret"></b></p>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu login-menu">
                             <!--<li><a href="./login.php">Đăng kí</a></li>
                             <li><a href="./dangky.php">Đăng nhập</a></li>-->
                             <li><a href="./setting/logout.php">Đăng xuất</a></li>

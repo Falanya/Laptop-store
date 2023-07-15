@@ -3,6 +3,41 @@ include './setting/connect.php';
 
 $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 
+//Kiểm tra người đã đăng nhập chưa, chưa thì chuyển về login.php
+if (!isset($_SESSION['user'])) {
+    header('location: login.php');
+    exit();
+}
+
+//Nếu người dùng không có vai trò admin là 1 thì chuyển về home.php
+if($_SESSION['user']['role'] !=1) {
+    header('location: home.php');
+    exit();
+}
+
+//Thống kê số đơn hàng hiện có
+$sqlTotalOrders = "SELECT COUNT(*) AS id FROM orders";
+$resultTotalOrders = $conn->query($sqlTotalOrders);
+$rowTotalOrders = $resultTotalOrders->fetch_assoc();
+$totalOrders = $rowTotalOrders['id'];
+
+//Thống kê các sản phẩm hiện có
+$sqlTotalProducts = "SELECT COUNT(*) AS id FROM product";
+$resultTotalProducts = $conn->query($sqlTotalProducts);
+$rowTotalProducts = $resultTotalProducts->fetch_assoc();
+$totalProducts = $rowTotalProducts['id'];
+
+//Thống kê số tài khoản người dùng
+$sqlTotalUsers = "SELECT COUNT(*) AS id FROM users";
+$resultTotalUsers = $conn->query($sqlTotalUsers);
+$rowTotalUsers = $resultTotalUsers->fetch_assoc();
+$totalUsers = $rowTotalUsers['id'];
+
+//Thống kê số tài khoản người dùng đang online
+$sqlOnlineUsers = "SELECT COUNT(*) AS online_users FROM users WHERE is_online = 1";
+$resultOnlineUsers = $conn ->query($sqlOnlineUsers);
+$rowOnlineUsers = $resultOnlineUsers->fetch_assoc();
+$onlineUsers = $rowOnlineUsers['online_users']
 
 ?>
 <!DOCTYPE html>
@@ -11,7 +46,7 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Admin</title>
+    <title>ADMINDEK</title>
     <link rel="icon" href="./img/logo.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./Css/styles.css">
@@ -34,7 +69,7 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
                     <li class="dropdown" id="dropdownn">
                         <img class="img_user" src="./img/<?php echo $user['avatar'] ?>">
                         <p class="dropdown-toggle" data-toggle="dropdown"><?php echo $user['name'] ?><b class="caret"></b></p>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu login_menu">
                             <!--<li><a href="./login.php">Đăng kí</a></li>
                             <li><a href="./dangky.php">Đăng nhập</a></li>-->
                             <li><a href="./setting/logout.php">Đăng xuất</a></li>
@@ -101,6 +136,12 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
             </div>
         </div>
         <div class="right_content">
+            <div class="thongke">
+                <?php echo $totalOrders ?>
+                <?php echo $totalProducts ?>
+                <?php echo $totalUsers ?>
+                <?php echo $onlineUsers ?>
+            </div>
             <div class="content_manager">
                 <?php if (isset($_GET['type'])) {
                     $type = $_GET['type'];

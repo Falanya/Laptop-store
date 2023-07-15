@@ -11,6 +11,7 @@ if (isset($_SESSION['user'])) {
 if (isset($_POST['user_name'])) {
     $user_name = $_POST['user_name'];
     $password = $_POST['password'];
+    $role = $_POST['role'];
 
     $sql = "SELECT * FROM users WHERE user_name = '$user_name'";
     $query = mysqli_query($conn, $sql);
@@ -23,13 +24,24 @@ if (isset($_POST['user_name'])) {
         if ($checkPassword) {
             //luu vao session
             $_SESSION['user'] = $data;
+            //Đặt người đang online là 1
+            $setUpdateOnlineUsers = "UPDATE users SET is_online = 1 WHERE user_name = '$user_name'";
+            $conn->query($setUpdateOnlineUsers);
             $data = true;
-            if(isset($_GET['action'])){
-                $action = $_GET['action'];
-                header('location: '.$action.'.php');
+            // if(isset($_GET['action'])){
+            //     $action = $_GET['action'];
+            //     header('location: '.$action.'.php');
+            // } else {
+            //     header('location: home.php');
+            // }
+            //Kiêm tra vai trò của người dùng
+            if($_SESSION['user']['role'] == 1) {
+                header('location: admin.php');
             } else {
                 header('location: home.php');
             }
+
+            exit();
             
         } else {
             $errorMk['password'] = "Sai mật khẩu nha :3";
