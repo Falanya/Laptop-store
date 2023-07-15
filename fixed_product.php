@@ -1,5 +1,5 @@
 <?php
-include './setting/connect.php';
+//include './setting/connect.php';
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];

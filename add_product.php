@@ -1,5 +1,5 @@
 <?php
-include './setting/connect.php';
+//include './setting/connect.php';
 
 $sql = "SELECT id,name,image,price,sale_price,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc FROM product Order By id DESC";
 
