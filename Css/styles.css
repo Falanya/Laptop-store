@@ -125,8 +125,11 @@ html body {
     background-color: yellow;
     text-align: center;
     top: 10.5%;
-    right: 14.1%;
+    right: 5%;
     z-index: 10;
+}
+.header_accout ul .cart {
+    position: relative;
 }
 
 .header_accout li a i:hover {
@@ -887,7 +890,7 @@ html body {
 }
 
 .frame_view_cart table tbody tr td img {
-    width: 150px; 
+    width: 150px;
     height: 150px;
 }
 
@@ -940,6 +943,7 @@ html body {
     background-color: tomato;
     color: white;
 }
+
 .frame_view_cart .checkout {
     width: 100%;
     display: flex;
@@ -953,11 +957,13 @@ html body {
     display: flex;
     justify-content: space-evenly;
 }
+
 .info_user {
     padding: 20px;
     background-color: white;
     margin-top: 20px;
 }
+
 .header_checkout .form-group label {
     display: block;
     font-weight: bold;
@@ -968,47 +974,57 @@ html body {
 .header_checkout .form-group textarea {
     display: block;
 }
+
 .header_checkout .form-group input {
     width: 350px;
     padding: 10px;
 }
+
 .header_checkout .form-group textarea {
     width: 350px;
     padding: 10px;
     height: 200px;
 }
+
 .header_checkout .introduce_order,
 .header_checkout .introduce_info {
     text-align: center;
     border-bottom: 1px solid black;
     padding-bottom: 5px;
 }
+
 .header_checkout .info_order {
     background-color: white;
     margin-top: 20px;
     padding: 10px;
     height: auto;
 }
+
 .header_checkout .info_order table thead tr th {
     padding: 5px;
     text-align: center;
 }
+
 .header_checkout .info_order table tbody tr td {
     text-align: center;
     padding-bottom: 10px;
 }
+
 .header_checkout .name_product {
     width: 50%;
 }
+
 .header_checkout table {
     border-bottom: 1px solid black;
 }
+
 .header_checkout .total_product {
     font-size: 20px;
     width: 50%;
     font-weight: 600;
     margin-top: 10px;
 }
+
 .header_checkout .submit_checkout {
     padding: 10px;
     background-color: tomato;
@@ -1017,6 +1033,7 @@ html body {
     font-size: 17px;
     text-align: center;
 }
+
 .header_checkout button {
     margin-left: 200px;
     margin-top: 10px;
@@ -1036,3 +1053,105 @@ html body {
 }
 
 /*Ket thuc checkout*/
+
+/*Xu li admin*/
+.header_admin .frame_header_admin {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_admin {
+    background-color: white;
+    height: auto;
+}
+
+.header_admin .frame_header_admin .logo_admin .frame_logo {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header_admin .frame_header_admin .logo_admin .img_logo a img {
+    width: 55px;
+    height: 60px;
+    padding-top: 5px;
+}
+
+.header_admin .frame_header_admin .frame_logo h2 {
+    padding: 22px 0px 0 0;
+    color: white;
+}
+
+.header_admin .frame_header_admin .logo_admin {
+    background-color: #263544;
+    width: 20%;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.header_admin .frame_header_admin .account_admin {
+    width: 15%;
+}
+
+.header_admin .frame_header_admin .account_admin li {
+    list-style: none;
+}
+
+.header_admin .frame_header_admin .account_admin .dropdown-menu {
+    display: none;
+    position: absolute;
+    padding: auto;
+}
+
+.header_admin .frame_header_admin .account_admin li p {
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: auto;
+    padding-left: 10px;
+    padding-right: auto;
+    cursor: pointer;
+}
+
+.header_admin .frame_header_admin .account_admin li img {
+    padding: 1px;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.header_admin .frame_header_admin .account_admin li img,
+.header_admin .frame_header_admin .account_admin li p {
+    display: inline;
+    float: left;
+}
+
+.header_admin .frame_header_admin .account_admin .dropdown {
+    padding-top: 7px;
+}
+
+.content_admin {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_admin .left_content {
+    background-color: #263544;
+    width: 20%;
+    height: 689.1px;
+}
+.content_admin .left_content .list_category ul li {
+    list-style: none;
+    padding-top: 30px;
+}
+
+.content_admin .left_content .list_category ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #b7c0cd;
+    padding-left: 30px;
+}
+
+.content_admin .left_content .list_category ul li a:hover {
+    color: white;
+}
+
+/*Ket thuc admin*/

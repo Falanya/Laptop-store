@@ -1,7 +1,7 @@
 <?php
 //include './setting/connect.php';
 
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $pro = mysqli_query($conn, "SELECT * FROM product WHERE id = $id");
 
@@ -44,34 +44,18 @@ if (isset($_POST['name'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý sản phẩm</title>
     <link rel="icon" href="./img/logo.jpg">
-    <link rel="stylesheet" href="./Css/product.css">
-    <link rel="stylesheet" href="./Css/responsive.css">
+    <link rel="stylesheet" href="./Css/styles.css">
+    <link rel="stylesheet" href="./Css/responsive_home.css">
 </head>
 
 <body>
-    <div class="header">
-        <div class="header_product_frame">
-            <div class="home">
-                <a href="./home.php"><img src="./img/logo.jpg" alt="Home"></a>
-            </div>
-            <div class="add_product">
-                <h3><a href="./add_product.php">Thêm sản phẩm</a></h3>
-            </div>
-            <div class="product">
-                <h3><a href="./product.php">Danh sách</a></h3>
-            </div>
-            <div class="fixed_product" style="background-color: black;">
-                <h3><a href="./fixed_product.php">Sửa sản phẩm</a></h3>
-            </div>
-        </div>
-    </div>
     <div class="title_product">
         <h3>Sửa sản phẩm</h3>
         <div class="add_product_frame">
             <form action="" method="POST" role="form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Tên sản phẩm:</label>
-                    <input type="text" class="form-control" id="" name="name" placeholder="Nhập tên sản phẩm" value="<?php echo $data['name']?>">
+                    <input type="text" class="form-control" id="" name="name" placeholder="Nhập tên sản phẩm" value="<?php echo $data['name'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="">Ảnh sản phẩm:</label>
@@ -126,7 +110,6 @@ if (isset($_POST['name'])) {
             </form>
         </div>
     </div>
-    <div class="unknown"></div>
 </body>
 
 </html>

@@ -40,27 +40,11 @@ if (isset($_POST['name'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý sản phẩm</title>
     <link rel="icon" href="./img/logo.jpg">
-    <link rel="stylesheet" href="./Css/product.css">
-    <link rel="stylesheet" href="./Css/responsive.css">
+    <link rel="stylesheet" href="./Css/styles.css">
+    <link rel="stylesheet" href="./Css/responsive_home.css">
 </head>
 
 <body>
-    <div class="header">
-        <div class="header_product_frame">
-            <div class="home">
-                <a href="./home.php"><img src="./img/logo.jpg" alt="Home"></a>
-            </div>
-            <div class="add_product" style="background-color: black;">
-                <h3><a href="./add_product.php">Thêm sản phẩm</a></h3>
-            </div>
-            <div class="product">
-                <h3><a href="./product.php">Danh sách</a></h3>
-            </div>
-            <div class="fixed_product">
-                <h3><a href="./fixed_product.php">Sửa sản phẩm</a></h3>
-            </div>
-        </div>
-    </div>
     <div class="title_product">
         <h3>Thêm sản phẩm</h3>
         <div class="add_product_frame">
@@ -122,7 +106,6 @@ if (isset($_POST['name'])) {
             </form>
         </div>
     </div>
-    <div class="unknown"></div>
 </body>
 
 </html>
