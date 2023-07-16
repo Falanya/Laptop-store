@@ -8,8 +8,21 @@
 
 html body {
     background-color: #b6b6b6;
+    overflow-y: scroll;
+    flex-grow: 1;
 }
 
+html body::-webkit-scrollbar {
+    width: 7px;
+}
+
+html body::-webkit-scrollbar-track {
+    background-color: #b6b6b6;
+}
+
+html body::-webkit-scrollbar-thumb {
+    background-color: tomato;
+}
 /*Xu ly header*/
 .header_top {
     display: flex;
@@ -1069,6 +1082,7 @@ html body {
     background-color: white;
     height: auto;
     z-index: 10;
+    border-bottom: 2px solid black;
 }
 
 .header_admin .frame_header_admin .logo_admin .frame_logo {
@@ -1090,7 +1104,6 @@ html body {
 .header_admin .frame_header_admin .logo_admin {
     background-color: #263544;
     width: 20%;
-    border-bottom: 1px solid black;
     border-right: 1px solid black;
 }
 
@@ -1169,7 +1182,7 @@ html body {
 .content_admin .left_content {
     background-color: #263544;
     width: 20%;
-    height: 689.1px;
+    height: 688.3px;
     overflow-y: scroll;
     flex-grow: 1;
 }
@@ -1206,4 +1219,79 @@ html body {
     width: 80%;
 }
 
+.content_admin .right_content .statistic {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.content_admin .right_content .frame_statistic .statistic {
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+}
+
+.content_admin .right_content .statistic .title_total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_admin .right_content .statistic .frame_total {
+    padding: 15px;
+    width: 20%;
+}
+.content_admin .right_content .title_total h3 {
+    padding-left: 5px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.content_admin .right_content .title_total i {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 100%;
+}
+.content_admin .right_content .frame_total span h3 {
+    padding: 0px;
+    width: 100%;
+    margin-top: 10px;
+}
+
 /*Ket thuc admin*/
+
+/*Xu li manager_product*/
+.manager_frame .manager_product table {
+    box-sizing: border-box;
+    border-collapse: separate;
+    border-spacing: 0;
+    padding: 0px;
+    margin-left: 0px;
+}
+
+.manager_frame .manager_product table tr td {
+    border: 2px solid #eeeeee;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px;
+}
+
+.manager_frame .manager_product button {
+    padding: 10px;
+    background-color: tomato;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.manager_frame .manager_product .button_fixed {
+    margin-right: 10px;
+}
+
+/*Ket thuc manager_product*/

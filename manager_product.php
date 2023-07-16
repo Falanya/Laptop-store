@@ -30,6 +30,7 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
                         <th>ID sản phẩm</th>
                         <th>Tên sản phẩm </th>
                         <th>Hãng</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,10 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
                             <td style="text-align: center;"><?php echo $pro['id'] ?></td>
                             <td><?php echo $pro['name'] ?></td>
                             <td><?php echo $pro['name_hang'] ?></td>
+                            <td>
+                                <button class="button_fixed">Sửa</button>
+                                <button>Xóa</button>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

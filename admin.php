@@ -1,5 +1,6 @@
 <?php
 include './setting/connect.php';
+include './setting/permission.php';
 
 $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 
@@ -9,11 +10,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-//Nếu người dùng không có vai trò admin là 1 thì chuyển về home.php
-if($_SESSION['user']['role'] !=1) {
-    header('location: home.php');
-    exit();
-}
+
 
 //Thống kê số đơn hàng hiện có
 $sqlTotalOrders = "SELECT COUNT(*) AS id FROM orders";
@@ -35,7 +32,7 @@ $totalUsers = $rowTotalUsers['id'];
 
 //Thống kê số tài khoản người dùng đang online
 $sqlOnlineUsers = "SELECT COUNT(*) AS online_users FROM users WHERE is_online = 1";
-$resultOnlineUsers = $conn ->query($sqlOnlineUsers);
+$resultOnlineUsers = $conn->query($sqlOnlineUsers);
 $rowOnlineUsers = $resultOnlineUsers->fetch_assoc();
 $onlineUsers = $rowOnlineUsers['online_users']
 
@@ -61,7 +58,7 @@ $onlineUsers = $rowOnlineUsers['online_users']
                     <div class="img_logo">
                         <a href="home.php"><img src="./img/logo.jpg"></a>
                     </div>
-                    <h2>ADMINDEK</h2>
+                    <h2><a href="admin.php" style="text-decoration: none; color: white;">ADMINDEK</a></h2>
                 </div>
             </div>
             <div class="account_admin">
@@ -136,11 +133,48 @@ $onlineUsers = $rowOnlineUsers['online_users']
             </div>
         </div>
         <div class="right_content">
-            <div class="thongke">
-                <p>Tổng số đơn hàng: <?php echo $totalOrders ?></p>
-                <p>Tổng số sản phẩm: <?php echo $totalProducts ?></p>
-                <p>Tổng số người dùng: <?php echo $totalUsers ?></p>
-                <p>Số người dùng đang trực tuyến: <?php echo $onlineUsers ?></p>
+            <div class="frame_statistic">
+                <div class="statistic">
+                    <div class="frame_total" style="background-color: red;">
+                        <div class="total_profit">
+                            <div class="title_total">
+                                <h2>Total Profit</h2>
+                                <i class="fas fa-money-bill-alt" style="color: red;"></i>
+                            </div>
+                            <span><h3></h3></span>
+                        </div>
+                    </div>
+                    <div class="frame_total" style="background-color: aqua;">
+                        <div class="total_orders">
+                            <div class="title_total">
+                                <h2>Total Orders</h2>
+                                <i class="fas fa-shopping-cart" style="color: aqua;"></i>
+                            </div>
+                            <span><h3><?php echo $totalOrders ?></h3></span>
+                        </div>
+                    </div>
+                    <div class="frame_total" style="background-color: greenyellow;">
+                        <div class="total_products">
+                            <div class="title_total">
+                                <h2>Total Products</h2>
+                                <i class="fas fa-layer-group" style="color: greenyellow"></i>
+                            </div>
+                            <span><h3><?php echo $totalProducts ?></h3></span>
+                        </div>
+                    </div>
+                    <div class="frame_total" style="background-color: yellow;">
+                        <div class="total_users">
+                            <div class="title_total">
+                                <h2>Total Users</h2>
+                                <i class="fas fa-user" style="color: yellow"></i>
+                            </div>
+                            <span><h3><?php echo $totalProducts ?></h3></span>
+                        </div>
+                    </div>
+                    <!--<div>
+                    <h3>Số người dùng đang trực tuyến: <?php echo $onlineUsers ?></h3>
+                </div>-->
+                </div>
             </div>
             <div class="content_manager">
                 <?php if (isset($_GET['type'])) {

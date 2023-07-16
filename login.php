@@ -7,6 +7,7 @@ if (isset($_SESSION['user'])) {
     header('location: home.php');
     exit();
 }
+$_SESSION['last_activity'] = time();
 
 if (isset($_POST['user_name'])) {
     $user_name = $_POST['user_name'];
@@ -27,6 +28,9 @@ if (isset($_POST['user_name'])) {
             //Đặt người đang online là 1
             $setUpdateOnlineUsers = "UPDATE users SET is_online = 1 WHERE user_name = '$user_name'";
             $conn->query($setUpdateOnlineUsers);
+            //Cập nhật thời gian hoạt động gần nhất của người dùng
+            $sqlUpdateLastActivity = "UPDATE users SET last_activity = NOW() WHERE user_name = '$user_name'";
+            $conn->query($sqlUpdateLastActivity);
             $data = true;
             // if(isset($_GET['action'])){
             //     $action = $_GET['action'];
@@ -35,14 +39,13 @@ if (isset($_POST['user_name'])) {
             //     header('location: home.php');
             // }
             //Kiêm tra vai trò của người dùng
-            if($_SESSION['user']['role'] == 1) {
+            if ($_SESSION['user']['role'] == 1) {
                 header('location: admin.php');
             } else {
                 header('location: home.php');
             }
 
             exit();
-            
         } else {
             $errorMk['password'] = "Sai mật khẩu nha :3";
         }
