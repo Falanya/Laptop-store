@@ -11,7 +11,6 @@ if (!isset($_SESSION['user'])) {
 }
 
 
-
 //Thống kê số đơn hàng hiện có
 $sqlTotalOrders = "SELECT COUNT(*) AS id FROM orders";
 $resultTotalOrders = $conn->query($sqlTotalOrders);

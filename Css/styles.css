@@ -980,6 +980,7 @@ html body::-webkit-scrollbar-thumb {
     padding: 20px;
     background-color: white;
     margin-top: 20px;
+    height: 540px;
 }
 
 .header_checkout .form-group label {
@@ -1050,6 +1051,7 @@ html body::-webkit-scrollbar-thumb {
     font-weight: 600;
     font-size: 17px;
     text-align: center;
+    cursor: pointer;
 }
 
 .header_checkout button {

@@ -9,8 +9,6 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 $sql = "SELECT * FROM product";
 $result = mysqli_query($conn, $sql);
 
-$sql1 = "SELECT * FROM hang";
-$result1 = mysqli_query($conn, $sql1);
 
 //Tính số bản ghi của bảng product
 $total_table = mysqli_num_rows($result);
