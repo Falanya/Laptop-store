@@ -22,6 +22,7 @@ html body::-webkit-scrollbar-track {
 html body::-webkit-scrollbar-thumb {
     background-color: tomato;
 }
+
 /*Xu ly header*/
 .header_top {
     display: flex;
@@ -162,7 +163,7 @@ html body::-webkit-scrollbar-thumb {
 }
 
 .header_accout .login-menu {
-    width: 140px;
+    width: 120px;
 }
 
 .dropdown ul li {
@@ -1241,6 +1242,7 @@ html body::-webkit-scrollbar-thumb {
     padding: 15px;
     width: 20%;
 }
+
 .content_admin .right_content .title_total h3 {
     padding-left: 5px;
     padding-right: 15px;
@@ -1258,6 +1260,7 @@ html body::-webkit-scrollbar-thumb {
     background-color: white;
     border-radius: 100%;
 }
+
 .content_admin .right_content .frame_total span h3 {
     padding: 0px;
     width: 100%;
@@ -1366,6 +1369,5 @@ html body::-webkit-scrollbar-thumb {
     border-radius: 50%;
     font-size: 15px;
 }
-
 
 /*Ket thuc manager_product*/

@@ -37,6 +37,10 @@
                         <ul class="dropdown-menu login-menu">
                             <!--<li><a href="./login.php">Đăng kí</a></li>
                             <li><a href="./dangky.php">Đăng nhập</a></li>-->
+                            <li><a href="#">Thông tin</a></li>
+                            <?php if ($_SESSION['user']['role'] == 1) { ?>
+                                <li><a href="admin.php">Quản lí</a></li>
+                            <?php } ?>
                             <li><a href="./setting/logout.php">Đăng xuất</a></li>
                         </ul>
                     </li>

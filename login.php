@@ -12,7 +12,7 @@ $_SESSION['last_activity'] = time();
 if (isset($_POST['user_name'])) {
     $user_name = $_POST['user_name'];
     $password = $_POST['password'];
-    $role = $_POST['role'];
+    //$role = $_POST['role'];
 
     $sql = "SELECT * FROM users WHERE user_name = '$user_name'";
     $query = mysqli_query($conn, $sql);

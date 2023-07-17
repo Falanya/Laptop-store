@@ -33,7 +33,7 @@ $totalUsers = $rowTotalUsers['id'];
 $sqlOnlineUsers = "SELECT COUNT(*) AS online_users FROM users WHERE is_online = 1";
 $resultOnlineUsers = $conn->query($sqlOnlineUsers);
 $rowOnlineUsers = $resultOnlineUsers->fetch_assoc();
-$onlineUsers = $rowOnlineUsers['online_users']
+$onlineUsers = $rowOnlineUsers['online_users'];
 
 ?>
 <!DOCTYPE html>
@@ -68,6 +68,10 @@ $onlineUsers = $rowOnlineUsers['online_users']
                         <ul class="dropdown-menu login_menu">
                             <!--<li><a href="./login.php">Đăng kí</a></li>
                             <li><a href="./dangky.php">Đăng nhập</a></li>-->
+                            <li><a href="#">Thông tin</a></li>
+                            <?php if ($_SESSION['user']['role'] == 1) { ?>
+                                <li><a href="admin.php">Quản lí</a></li>
+                            <?php } ?>
                             <li><a href="./setting/logout.php">Đăng xuất</a></li>
                         </ul>
                     </li>
@@ -140,7 +144,9 @@ $onlineUsers = $rowOnlineUsers['online_users']
                                 <h2>Total Profit</h2>
                                 <i class="fas fa-money-bill-alt" style="color: red;"></i>
                             </div>
-                            <span><h3></h3></span>
+                            <span>
+                                <h3></h3>
+                            </span>
                         </div>
                     </div>
                     <div class="frame_total" style="background-color: aqua;">
@@ -149,7 +155,9 @@ $onlineUsers = $rowOnlineUsers['online_users']
                                 <h2>Total Orders</h2>
                                 <i class="fas fa-shopping-cart" style="color: aqua;"></i>
                             </div>
-                            <span><h3><?php echo $totalOrders ?></h3></span>
+                            <span>
+                                <h3><?php echo $totalOrders ?></h3>
+                            </span>
                         </div>
                     </div>
                     <div class="frame_total" style="background-color: greenyellow;">
@@ -158,7 +166,9 @@ $onlineUsers = $rowOnlineUsers['online_users']
                                 <h2>Total Products</h2>
                                 <i class="fas fa-layer-group" style="color: greenyellow"></i>
                             </div>
-                            <span><h3><?php echo $totalProducts ?></h3></span>
+                            <span>
+                                <h3><?php echo $totalProducts ?></h3>
+                            </span>
                         </div>
                     </div>
                     <div class="frame_total" style="background-color: yellow;">
@@ -167,7 +177,9 @@ $onlineUsers = $rowOnlineUsers['online_users']
                                 <h2>Total Users</h2>
                                 <i class="fas fa-user" style="color: yellow"></i>
                             </div>
-                            <span><h3><?php echo $onlineUsers ?> / <?php echo $totalUsers ?></h3></span>
+                            <span>
+                                <h3><?php echo $onlineUsers ?> / <?php echo $totalUsers ?></h3>
+                            </span>
                         </div>
                     </div>
                     <!--<div>
