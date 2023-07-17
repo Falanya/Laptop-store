@@ -27,7 +27,7 @@ if (isset($_POST['user_name'])) {
         $pass = password_hash($password, PASSWORD_DEFAULT);
         //var_dump($pass);
         //die();
-        $avatarDefault = "boNhat.jpg";
+        $avatarDefault = "be7.jpg";
         $sql = "INSERT INTO users(user_name,name,email,password,address,sdt,avatar) VALUES ('$user_name','$name','$email','$pass','$address','$sdt','$avatarDefault')";
         $query = mysqli_query($conn, $sql);
 

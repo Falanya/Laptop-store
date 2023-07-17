@@ -71,10 +71,10 @@ $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
                                 <p>In stock</p>
                             </div>
                             <div class="img_laptop">
-                                <a href="./product_detail.php?id=<?php echo $info_product['id'] ?>"><img src="./img/<?php echo $info_product['image'] ?>" alt=""></a>
+                                <a href="product_detail.php?id=<?php echo $info_product['id'] ?>"><img src="./img/<?php echo $info_product['image'] ?>" alt=""></a>
                             </div>
                             <div class="click_order">
-                                <p><a href="./product_detail.php?id=<?php echo $info_product['id'] ?>">Click để xem chi tiết</a></p>
+                                <p><a href="product_detail.php?id=<?php echo $info_product['id'] ?>">Click để xem chi tiết</a></p>
                                 <button><a style="text-decoration: none; color:white;" href="./cart.php?id=<?php echo $info_product['id'] ?>">Đặt hàng</a></button>
                             </div>
                             <div class="describe_laptop">

@@ -45,10 +45,15 @@ if (isset($_POST['name'])) {
 </head>
 
 <body>
-    <div class="title_product">
-        <h3>Thêm sản phẩm</h3>
-        <div class="add_product_frame">
-            <form action="" method="POST" role="form" enctype="multipart/form-data">
+    <div class="header_add_product">
+        <div class="title_add_product">
+            <h3>Thêm sản phẩm</h3>
+        </div>
+        <div class="operation_add_product">
+            <button><a href="admin.php?type=manager_product">Danh sách sản phẩm</a></button>
+        </div>
+        <div class="frame_form_add_product">
+            <form class="form_add_product" action="" method="POST" role="form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Tên sản phẩm:</label>
                     <input type="text" class="form-control" id="" name="name" placeholder="Nhập tên sản phẩm">

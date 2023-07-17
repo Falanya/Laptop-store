@@ -13,7 +13,7 @@ $result = mysqli_query($conn, $sql);
 $total_table = mysqli_num_rows($result);
 
 //Thiết lập số bảng ghi trên một trang
-$limit = 1;
+$limit = 10;
 
 //Lấy trang hiện tại
 $cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
@@ -42,8 +42,23 @@ $result = mysqli_query($conn, "SELECT product.*, hang.name AS 'name_hang' FROM p
 </head>
 
 <body>
-    <div class="manager_frame">
-        <h3>Danh sách sản phẩm</h3>
+    <div class="manager_product_frame">
+        <div class="title_manager_product">
+            <h3>Quản lí sản phẩm</h3>
+        </div>
+        <div class="operation_product">
+            <div class="button_add_product">
+                <button><a href="admin.php?type=add_product">Thêm sản phẩm</a></button>
+            </div>
+            <div class="frame_search_product">
+                <div class="search_product">
+                    <form action="" id="search_box" method="POST" role="form">
+                        <input class="search_text" id="search_text" name="searchss" type="text" placeholder="Search...">
+                        <button class="search_submit" id="search_submit" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="manager_product">
             <table>
                 <thead>
@@ -51,7 +66,7 @@ $result = mysqli_query($conn, "SELECT product.*, hang.name AS 'name_hang' FROM p
                         <th>ID sản phẩm</th>
                         <th>Tên sản phẩm </th>
                         <th>Hãng</th>
-                        <th></th>
+                        <!--<th></th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -61,8 +76,9 @@ $result = mysqli_query($conn, "SELECT product.*, hang.name AS 'name_hang' FROM p
                             <td><?php echo $pro['name'] ?></td>
                             <td><?php echo $pro['name_hang'] ?></td>
                             <td>
-                                <button class="button_fixed">Sửa</button>
-                                <button>Xóa</button>
+                                <button class="button_fixed"><a href="#">Sửa</a></button>
+                                <button class="button_delete"><a href="#">Xóa</a></button>
+                                <button class="button_details"><a href="product_detail.php?id=<?php echo $pro['id'] ?>">Chi tiết</a></button>
                             </td>
                         </tr>
                     <?php endforeach; ?>

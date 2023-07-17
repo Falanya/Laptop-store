@@ -125,9 +125,9 @@ $onlineUsers = $rowOnlineUsers['online_users']
         <div class="left_content">
             <div class="list_category">
                 <ul>
-                    <li><a href="admin.php?type=1">Quản lí sản phẩm</a></li>
-                    <li><a href="admin.php?type=2">Quản lí người dùng</a></li>
-                    <li><a href="admin.php?type=3">Quản lí đơn hàng</a></li>
+                    <li><a href="admin.php?type=manager_product">Quản lí sản phẩm</a></li>
+                    <li><a href="admin.php?type=manager_users">Quản lí người dùng</a></li>
+                    <li><a href="admin.php?type=manager_orders">Quản lí đơn hàng</a></li>
                 </ul>
             </div>
         </div>
@@ -167,7 +167,7 @@ $onlineUsers = $rowOnlineUsers['online_users']
                                 <h2>Total Users</h2>
                                 <i class="fas fa-user" style="color: yellow"></i>
                             </div>
-                            <span><h3><?php echo $totalProducts ?></h3></span>
+                            <span><h3><?php echo $onlineUsers ?> / <?php echo $totalUsers ?></h3></span>
                         </div>
                     </div>
                     <!--<div>
@@ -178,12 +178,14 @@ $onlineUsers = $rowOnlineUsers['online_users']
             <div class="content_manager">
                 <?php if (isset($_GET['type'])) {
                     $type = $_GET['type'];
-                    if ($type == 1) {
+                    if ($type == 'manager_product') {
                         include 'manager_product.php';
-                    } else if ($type == 2) {
+                    } else if ($type == 'manager_users') {
                         include 'manager_users.php';
-                    } else if ($type == 3) {
-                        include 'manager_check.php';
+                    } else if ($type == 'manager_orders') {
+                        include 'manager_orders.php';
+                    } else if ($type == 'add_product') {
+                        include 'add_product.php';
                     }
                 } ?>
             </div>
