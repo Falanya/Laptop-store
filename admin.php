@@ -4,7 +4,7 @@ include './setting/permission.php';
 
 $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 
-//Kiểm tra người đã đăng nhập chưa, chưa thì chuyển về login.php
+//Kiểm tra người đã đăng nhập chưa, nếu chưa thì chuyển về login.php
 if (!isset($_SESSION['user'])) {
     header('location: login.php');
     exit();
