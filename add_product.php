@@ -1,5 +1,5 @@
 <?php
-//include './setting/connect.php';
+include './setting/connect.php';
 
 $sql = "SELECT id,name,image,price,sale_price,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc FROM product Order By id DESC";
 
@@ -17,13 +17,14 @@ if (isset($_POST['name'])) {
     $price = $_POST['price'];
     $sale_price = $_POST['sale_price'];
     $id_hang = $_POST['id_hang'];
+    $quantity = $_POST['quantity'];
 
     if (isset($_FILES['image'])) {
         $file = $_FILES['image'];
         $file_name = $file['name'];
         move_uploaded_file($file['tmp_name'], 'img/' . $file_name);
     }
-    $sqlss = "INSERT INTO product(name,image,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc,price,sale_price) VALUES ('$name','$file_name','$id_hang','$cpu','$ram','$o_cung','$card_do_hoa','$trong_luong','$mau_sac','$kich_thuoc','$price','$sale_price')";
+    $sqlss = "INSERT INTO product(name,image,quantity,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc,price,sale_price) VALUES ('$name','$file_name','$quantity','$id_hang','$cpu','$ram','$o_cung','$card_do_hoa','$trong_luong','$mau_sac','$kich_thuoc','$price','$sale_price')";
     $query = mysqli_query($conn, $sqlss);
     if ($query) {
         header('location: product.php');
@@ -61,6 +62,10 @@ if (isset($_POST['name'])) {
                 <div class="form-group">
                     <label for="">Ảnh sản phẩm:</label>
                     <input style="width:43.3%; background-color:antiquewhite; cursor: pointer;" type="file" class="form-control" id="" name="image" placeholder="Ảnh sản phẩm">
+                </div>
+                <div class="form-group">
+                    <label for="">Số lượng:</label>
+                    <input type="text" class="form-control" id="" name="quantity" placeholder="Nhập số lượng sản phẩm">
                 </div>
                 <div class="form-group">
                     <label for="">Tên hãng:</label>

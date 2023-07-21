@@ -5,13 +5,16 @@ include './cart-function.php';
 $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 
+
 if (isset($_POST['name'])) {
     $id_user = $user['id'];
     $note = $_POST['note'];
     $sdt = $_POST['sdt'];
     $address = $_POST['address'];
 
-    $query = mysqli_query($conn, "INSERT INTO orders(id_users,note,address,sdt) VALUES ('$id_user','$note','$address','$sdt')");
+    $total_price = total_price($cart);
+
+    $query = mysqli_query($conn, "INSERT INTO orders(id_users,total_price,note,address,sdt) VALUES ('$id_user','$total_price','$note','$address','$sdt')");
 
     if ($query) {
         $id_order = mysqli_insert_id($conn);
