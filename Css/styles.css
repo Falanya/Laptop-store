@@ -1082,7 +1082,7 @@ html body::-webkit-scrollbar-thumb {
 
 .header_admin {
     background-color: white;
-    height: auto;
+    height: 65px;
     z-index: 10;
     border-bottom: 2px solid black;
 }
@@ -1107,10 +1107,13 @@ html body::-webkit-scrollbar-thumb {
     background-color: #263544;
     width: 20%;
     border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    position: fixed;
 }
 
 .header_admin .frame_header_admin .account_admin {
-    width: 15%;
+    width: 20%;
+    margin-left: 1300px;
 }
 
 .header_admin .frame_header_admin .account_admin li {
@@ -1185,8 +1188,9 @@ html body::-webkit-scrollbar-thumb {
     background-color: #263544;
     width: 20%;
     height: 688.3px;
-    overflow-y: scroll;
+    overflow-y: scroll; /*scroll*/
     flex-grow: 1;
+    position: fixed;
 }
 
 .content_admin .left_content::-webkit-scrollbar {
@@ -1211,6 +1215,7 @@ html body::-webkit-scrollbar-thumb {
     font-size: 20px;
     color: #b7c0cd;
     padding-left: 30px;
+    display: block;
 }
 
 .content_admin .left_content .list_category ul li a:hover {
@@ -1219,6 +1224,7 @@ html body::-webkit-scrollbar-thumb {
 
 .content_admin .right_content {
     width: 80%;
+    margin-left: 306px;
 }
 
 .content_admin .right_content .statistic {
@@ -1371,3 +1377,10 @@ html body::-webkit-scrollbar-thumb {
 }
 
 /*Ket thuc manager_product*/
+
+/*Xu li add_product*/
+.header_add_product .frame_form_add_product form {
+    
+}
+
+/*Ket thuc add_product*/

@@ -126,7 +126,7 @@ $onlineUsers = $rowOnlineUsers['online_users'];
         </div>
     </div>
     <div class="content_admin">
-        <div class="left_content">
+        <div class="left_content" onscroll="syncScroll('right_content')">
             <div class="list_category">
                 <ul>
                     <li><a href="admin.php?type=manager_product">Quản lí sản phẩm</a></li>
@@ -135,7 +135,7 @@ $onlineUsers = $rowOnlineUsers['online_users'];
                 </ul>
             </div>
         </div>
-        <div class="right_content">
+        <div class="right_content" onscroll="syncScroll('left_content')">
             <div class="frame_statistic">
                 <div class="statistic">
                     <div class="frame_total" style="background-color: red;">
@@ -202,6 +202,14 @@ $onlineUsers = $rowOnlineUsers['online_users'];
                 } ?>
             </div>
         </div>
+        <script>
+            function syncScroll(targetContainerId) {
+                const targetContainer = document.getElementById(targetContainerId);
+                const sourceContainer = targetContainerId === 'right_content' ? document.querySelector('.left_content') : document.querySelector('.right_content');
+
+                targetContainer.scrollTop = sourceContainer.scrollTop;
+            }
+        </script>
     </div>
 </body>
 

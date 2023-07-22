@@ -11,10 +11,9 @@ if (isset($_POST['name'])) {
     $note = $_POST['note'];
     $sdt = $_POST['sdt'];
     $address = $_POST['address'];
-
     $total_price = total_price($cart);
 
-    $query = mysqli_query($conn, "INSERT INTO orders(id_users,total_price,note,address,sdt) VALUES ('$id_user','$total_price','$note','$address','$sdt')");
+    $query = mysqli_query($conn, "INSERT INTO orders(id_users,total_price,note,status,address,sdt) VALUES ('$id_user','$total_price','$note',0,'$address','$sdt')");
 
     if ($query) {
         $id_order = mysqli_insert_id($conn);
