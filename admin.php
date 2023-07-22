@@ -10,6 +10,11 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
+//Thống kê doanh thu
+$sqlTotalprice = "SELECT SUM(total_price) as total_revenue FROM orders";
+$result_total_revenue = mysqli_query($conn, $sqlTotalprice);
+$row_total_revenue = mysqli_fetch_assoc($result_total_revenue);
+$totalRevenue = $row_total_revenue['total_revenue'];
 
 //Thống kê số đơn hàng hiện có
 $sqlTotalOrders = "SELECT COUNT(*) AS id FROM orders";
@@ -145,7 +150,7 @@ $onlineUsers = $rowOnlineUsers['online_users'];
                                 <i class="fas fa-money-bill-alt" style="color: red;"></i>
                             </div>
                             <span>
-                                <h3></h3>
+                                <h3><?php echo number_format($totalRevenue * 1000) ?>,000₫</h3>
                             </span>
                         </div>
                     </div>
