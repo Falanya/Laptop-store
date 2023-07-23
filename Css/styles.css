@@ -1188,7 +1188,8 @@ html body::-webkit-scrollbar-thumb {
     background-color: #263544;
     width: 20%;
     height: 688.3px;
-    overflow-y: scroll; /*scroll*/
+    overflow-y: scroll;
+    /*scroll*/
     flex-grow: 1;
     position: fixed;
 }
@@ -1379,8 +1380,58 @@ html body::-webkit-scrollbar-thumb {
 /*Ket thuc manager_product*/
 
 /*Xu li add_product*/
-.header_add_product .frame_form_add_product form {
-    
+.header_add_product {
+    background-color: white;
+    padding: 10px;
+}
+
+.header_add_product .title_add_product {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.header_add_product .operation_add_product button a {
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    padding: 10px;
+}
+
+.header_add_product .operation_add_product button {
+    background-color: greenyellow;
+    margin: 10px;
+    padding: 5px;
+    border: none;
+}
+
+.header_add_product .frame_form_add_product form label {
+    display: block;
+    padding: 5px;
+    font-size: 17px;
+}
+
+.header_add_product .frame_form_add_product form input {
+    display: block;
+    padding: 10px;
+    width: 350px;
+}
+
+.header_add_product .frame_form_add_product .form_add_product {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header_add_product .frame_form_add_product .form_add_product .img_product input {
+    width: 350px;
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
+.header_add_product .frame_form_add_product form button {
+    padding: 10px;
+    margin-top: 30px;
+    margin-left: 550px;
+    margin-bottom: 50px;
 }
 
 /*Ket thuc add_product*/

@@ -66,6 +66,8 @@ $result = mysqli_query($conn, "SELECT product.*, hang.name AS 'name_hang' FROM p
                         <th>ID sản phẩm</th>
                         <th>Tên sản phẩm </th>
                         <th>Hãng</th>
+                        <th>Số lượng</th>
+                        <th>Trạng thái</th>
                         <!--<th></th>-->
                     </tr>
                 </thead>
@@ -73,8 +75,10 @@ $result = mysqli_query($conn, "SELECT product.*, hang.name AS 'name_hang' FROM p
                     <?php foreach ($result as $pro) : ?>
                         <tr>
                             <td style="text-align: center;"><?php echo $pro['id'] ?></td>
-                            <td><?php echo $pro['name'] ?></td>
-                            <td><?php echo $pro['name_hang'] ?></td>
+                            <td style="text-align: center;"><?php echo $pro['name'] ?></td>
+                            <td style="text-align: center;"><?php echo $pro['name_hang'] ?></td>
+                            <td style="text-align: center;"><?php echo $pro['quantity'] ?></td>
+                            <td style="text-align: center;"></td>
                             <td>
                                 <button class="button_fixed"><a href="#">Sửa</a></button>
                                 <button class="button_delete"><a href="#">Xóa</a></button>
