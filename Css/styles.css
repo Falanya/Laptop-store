@@ -1405,7 +1405,7 @@ html body::-webkit-scrollbar-thumb {
     border: none;
 }
 
-.header_add_product .frame_form_add_product form label {
+.header_add_product .frame_form_add_product form .title_info {
     display: block;
     padding: 5px;
     font-size: 17px;
@@ -1439,6 +1439,28 @@ html body::-webkit-scrollbar-thumb {
     width: 350px;
     height: 100px;
     padding: 10px;
+}
+
+.header_add_product form .checkboxx {
+    display: flex;
+}
+
+.header_add_product form .checkboxx .checkbox-container {
+    display: flex;
+}
+
+.header_add_product form .checkboxx .checkbox-container input {
+    width: auto;
+    padding: 10px;
+}
+
+.header_add_product form .checkboxx .checkbox-container label {
+    width: auto;
+    padding: 10px;
+}
+
+.header_add_product form .checkboxx .checkbox-sold-out {
+    margin-left: 20px;
 }
 
 /*Ket thuc add_product*/

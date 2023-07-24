@@ -23,7 +23,6 @@ if ($result->num_rows > 0) {
     $product_trong_luong = $row["trong_luong"];
     $product_mau_sac = $row["mau_sac"];
     $product_kich_thuoc = $row["kich_thuoc"];
-    // Các thông tin khác của sản phẩm...
 
     // Hiển thị thông tin sản phẩm
     // echo "<h1>$product_name</h1>";
@@ -104,7 +103,7 @@ $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
                         </div>
                         <div class="product_details_orders">
                             <!--<button type="submit"><a href="#">Mua ngay</a></button>-->
-                            <?php if ($product['status'] == 0) { ?>
+                            <?php if ($product['status'] == 1) { ?>
                                 <button type="submit"><a href="./cart.php?id=<?php echo $product['id'] ?>">Thêm vào giỏ hàng</a></button>
                             <?php } else { ?>
                                 <button type="submit"><a>Sản phẩm hết hàng</a></button>

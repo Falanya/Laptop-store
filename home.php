@@ -67,7 +67,7 @@ $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
                     <?php foreach ($result as $info_product) : ?>
                         <div class="content_item">
                             <div class="in_stock">
-                                <?php if ($info_product['status'] == 0) { ?>
+                                <?php if ($info_product['status'] == 1) { ?>
                                     <i class="far fa-check-circle"></i>
                                     <p>In stock</p>
                                 <?php } else { ?>

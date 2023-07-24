@@ -18,14 +18,15 @@ if (isset($_POST['name'])) {
     $sale_price = $_POST['sale_price'];
     $id_hang = $_POST['id_hang'];
     $quantity = $_POST['quantity'];
+    $status = $_POST['status'];
 
     if (isset($_FILES['image'])) {
         $file = $_FILES['image'];
         $file_name = $file['name'];
         move_uploaded_file($file['tmp_name'], 'img/' . $file_name);
     }
-    $add_sql = "INSERT INTO product(name,image,quantity,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc,price,sale_price,status) VALUES ('$name','$file_name','$quantity','$id_hang','$cpu','$ram','$o_cung','$card_do_hoa','$trong_luong','$mau_sac','$kich_thuoc','$price','$sale_price',0)";
-    
+    $add_sql = "INSERT INTO product(name,image,quantity,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc,price,sale_price,status) VALUES ('$name','$file_name','$quantity','$id_hang','$cpu','$ram','$o_cung','$card_do_hoa','$trong_luong','$mau_sac','$kich_thuoc','$price','$sale_price','$status')";
+
     $query = mysqli_query($conn, $add_sql);
 
     if ($query) {
@@ -61,19 +62,19 @@ if (isset($_POST['name'])) {
                 <div class="form_add_product">
                     <div>
                         <div class="form-group">
-                            <label for="">Tên sản phẩm:</label>
+                            <label class="title_info" for="">Tên sản phẩm:</label>
                             <input type="text" class="form-control" id="" name="name" placeholder="Nhập tên sản phẩm">
                         </div>
                         <div class="form-group img_product">
-                            <label for="">Ảnh sản phẩm:</label>
+                            <label class="title_info" for="">Ảnh sản phẩm:</label>
                             <input type="file" class="form-control" id="" name="image" placeholder="Ảnh sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="">Số lượng:</label>
+                            <label class="title_info" for="">Số lượng:</label>
                             <input type="text" class="form-control" id="" name="quantity" placeholder="Nhập số lượng sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="">Tên hãng:</label>
+                            <label class="title_info" for="">Tên hãng:</label>
                             <select name="id_hang" id="input" class="form-control" required="required">
                                 <option value="">Chọn hãng đi nè :3</option>
                                 <?php foreach ($hangg as $cet) : ?>
@@ -82,42 +83,55 @@ if (isset($_POST['name'])) {
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="">CPU:</label>
+                            <label class="title_info" for="">CPU:</label>
                             <textarea type="text" class="form-control content_product" id="" name="cpu" placeholder="CPU của sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="">Ram:</label>
+                            <label class="title_info" for="">Ram:</label>
                             <textarea type="text" class="form-control content_product" id="" name="ram" placeholder="Ram của sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="">Ổ cứng:</label>
+                            <label class="title_info" for="">Ổ cứng:</label>
                             <textarea type="text" class="form-control content_product" id="" name="o_cung" placeholder="Ổ cứng của sản phẩm"></textarea>
                         </div>
                     </div>
                     <div>
                         <div class="form-group">
-                            <label for="">Card đồ họa:</label>
+                            <label class="title_info" for="">Card đồ họa:</label>
                             <textarea type="text" class="form-control content_product" id="" name="card_do_hoa" placeholder="Card đồ họa của sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="">Trọng lượng:</label>
+                            <label class="title_info" for="">Trọng lượng:</label>
                             <input type="text" class="form-control" id="" name="trong_luong" placeholder="Trọng lượng của sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="">Màu sắc:</label>
+                            <label class="title_info" for="">Màu sắc:</label>
                             <input type="text" class="form-control" id="" name="mau_sac" placeholder="Màu sắc của sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="">Kích thước:</label>
+                            <label class="title_info" for="">Kích thước:</label>
                             <input type="text" class="form-control" id="" name="kich_thuoc" placeholder="Kích thước của sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="">Giá sản phẩm:</label>
+                            <label class="title_info" for="">Giá sản phẩm:</label>
                             <input type="text" class="form-control" id="" name="price" placeholder="Nhập giá sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="">Giá khuyến mãi:</label>
+                            <label class="title_info" for="">Giá khuyến mãi:</label>
                             <input type="text" class="form-control" id="" name="sale_price" placeholder="Nhập giá khuyến mãi">
+                        </div>
+                        <div class="form-group">
+                            <label class="title_info" for="">Trạng thái:</label>
+                            <div class="checkboxx">
+                                <div class="checkbox-container">
+                                    <label>Còn hàng</label>
+                                    <input type="radio" name="status" value="1" id="duyet" checked="checked">
+                                </div>
+                                <div class="checkbox-container checkbox-sold-out">
+                                    <label>Hết hàng</label>
+                                    <input type="radio" name="status" value="0" id="chuaduyet" checked="checked">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
