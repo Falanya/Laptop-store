@@ -160,6 +160,7 @@ html body::-webkit-scrollbar-thumb {
     border: 1px solid black;
     background-color: white;
     width: 120px;
+    z-index: 100;
 }
 
 .header_accout .login-menu {
@@ -1432,6 +1433,12 @@ html body::-webkit-scrollbar-thumb {
     margin-top: 30px;
     margin-left: 550px;
     margin-bottom: 50px;
+}
+
+.header_add_product .frame_form_add_product form .content_product {
+    width: 350px;
+    height: 100px;
+    padding: 10px;
 }
 
 /*Ket thuc add_product*/

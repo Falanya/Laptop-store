@@ -203,18 +203,12 @@ $onlineUsers = $rowOnlineUsers['online_users'];
                         include 'manager_orders.php';
                     } else if ($type == 'add_product') {
                         include 'add_product.php';
+                    } else if ($type == 'fixed_product') {
+                        include 'fixed_product.php';
                     }
                 } ?>
             </div>
         </div>
-        <script>
-            function syncScroll(targetContainerId) {
-                const targetContainer = document.getElementById(targetContainerId);
-                const sourceContainer = targetContainerId === 'right_content' ? document.querySelector('.left_content') : document.querySelector('.right_content');
-
-                targetContainer.scrollTop = sourceContainer.scrollTop;
-            }
-        </script>
     </div>
 </body>
 

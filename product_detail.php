@@ -14,7 +14,6 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $product_name = $row["name"];
     $product_image = $row["image"];
-    $product_image_content = $row["image_content"];
     $product_price = $row["price"];
     $product_sale_price = $row["sale_price"];
     $product_cpu = $row["cpu"];
@@ -53,64 +52,68 @@ $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 <body>
     <?php include './header.php' ?>
 
-    <?php foreach($result as $product) : ?>
-    <div class="product_details" style="margin: 100px;">
-        <div class="product_details_frame">
-            <div class="chia_doi_content">
-                <div class="product_details_left">
-                    <img src="./img/<?php echo $product['image'] ?>">
-                    <div class="product_details_name">
-                        <h3><?php echo $product['name'] ?></h3>
-                        <div class="cost_laptop">
-                            <h2 style="color: red;"><?php echo $product['price'] ?>.000₫</h2>
-                            <h4 style="color: grey; text-decoration: line-through;"><?php echo $product['sale_price'] ?>.000₫</h4>
+    <?php foreach ($result as $product) : ?>
+        <div class="product_details" style="margin: 100px;">
+            <div class="product_details_frame">
+                <div class="chia_doi_content">
+                    <div class="product_details_left">
+                        <img src="./img/<?php echo $product['image'] ?>">
+                        <div class="product_details_name">
+                            <h3><?php echo $product['name'] ?></h3>
+                            <div class="cost_laptop">
+                                <h2 style="color: red;"><?php echo $product['price'] ?>.000₫</h2>
+                                <h4 style="color: grey; text-decoration: line-through;"><?php echo $product['sale_price'] ?>.000₫</h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="product_details_right">
-                    <div class="product_details_content">
-                        <h3>Thông số kỹ thuật</h3>
-                        <table>
-                            <tbody style="box-sizing: border-box;">
-                                <tr>
-                                    <td class="product_details_info_1">CPU</td>
-                                    <td class="product_details_info_2"><?php echo $product['cpu'] ?>.</td>
-                                </tr>
-                                <tr>
-                                    <td class="product_details_info_1">RAM</td>
-                                    <td class="product_details_info_2"><?php echo $product['ram'] ?>.</td>
-                                </tr>
-                                <tr>
-                                    <td class="product_details_info_1">Ổ cứng</td>
-                                    <td class="product_details_info_2"><?php echo $product['o_cung'] ?>.</td>
-                                </tr>
-                                <tr>
-                                    <td class="product_details_info_1">Card đồ họa</td>
-                                    <td class="product_details_info_2"><?php echo $product['card_do_hoa'] ?>.</td>
-                                </tr>
-                                <tr>
-                                    <td class="product_details_info_1">Trọng lượng</td>
-                                    <td class="product_details_info_2"><?php echo $product['trong_luong'] ?>.</td>
-                                </tr>
-                                <tr>
-                                    <td class="product_details_info_1">Màu sắc</td>
-                                    <td class="product_details_info_2"><?php echo $product['mau_sac'] ?>.</td>
-                                </tr>
-                                <tr>
-                                    <td class="product_details_info_1">Kích thước</td>
-                                    <td class="product_details_info_2"><?php echo $product['kich_thuoc'] ?>.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="product_details_orders">
-                        <!--<button type="submit"><a href="#">Mua ngay</a></button>-->
-                        <button type="submit"><a href="./cart.php?id=<?php echo $product['id'] ?>">Thêm vào giỏ hàng</a></button>
+                    <div class="product_details_right">
+                        <div class="product_details_content">
+                            <h3>Thông số kỹ thuật</h3>
+                            <table>
+                                <tbody style="box-sizing: border-box;">
+                                    <tr>
+                                        <td class="product_details_info_1">CPU</td>
+                                        <td class="product_details_info_2"><?php echo $product['cpu'] ?>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product_details_info_1">RAM</td>
+                                        <td class="product_details_info_2"><?php echo $product['ram'] ?>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product_details_info_1">Ổ cứng</td>
+                                        <td class="product_details_info_2"><?php echo $product['o_cung'] ?>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product_details_info_1">Card đồ họa</td>
+                                        <td class="product_details_info_2"><?php echo $product['card_do_hoa'] ?>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product_details_info_1">Trọng lượng</td>
+                                        <td class="product_details_info_2"><?php echo $product['trong_luong'] ?>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product_details_info_1">Màu sắc</td>
+                                        <td class="product_details_info_2"><?php echo $product['mau_sac'] ?>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product_details_info_1">Kích thước</td>
+                                        <td class="product_details_info_2"><?php echo $product['kich_thuoc'] ?>.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="product_details_orders">
+                            <!--<button type="submit"><a href="#">Mua ngay</a></button>-->
+                            <?php if ($product['status'] == 0) { ?>
+                                <button type="submit"><a href="./cart.php?id=<?php echo $product['id'] ?>">Thêm vào giỏ hàng</a></button>
+                            <?php } else { ?>
+                                <button type="submit"><a>Sản phẩm hết hàng</a></button>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <?php endforeach; ?>
 
     <?php include './footer.php' ?>

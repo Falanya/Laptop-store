@@ -1,9 +1,9 @@
 <?php
 //include './setting/connect.php';
 
-$sql = "SELECT id,name,image,price,sale_price,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc FROM product Order By id DESC";
-
+$sql = "SELECT * FROM product";
 $result = mysqli_query($conn, $sql);
+
 $hangg = mysqli_query($conn, "SELECT * FROM hang");
 if (isset($_POST['name'])) {
     $name = $_POST['name'];
@@ -24,12 +24,15 @@ if (isset($_POST['name'])) {
         $file_name = $file['name'];
         move_uploaded_file($file['tmp_name'], 'img/' . $file_name);
     }
-    $sqlss = "INSERT INTO product(name,image,quantity,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc,price,sale_price) VALUES ('$name','$file_name','$quantity','$id_hang','$cpu','$ram','$o_cung','$card_do_hoa','$trong_luong','$mau_sac','$kich_thuoc','$price','$sale_price')";
-    $query = mysqli_query($conn, $sqlss);
+    $add_sql = "INSERT INTO product(name,image,quantity,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc,price,sale_price,status) VALUES ('$name','$file_name','$quantity','$id_hang','$cpu','$ram','$o_cung','$card_do_hoa','$trong_luong','$mau_sac','$kich_thuoc','$price','$sale_price',0)";
+    
+    $query = mysqli_query($conn, $add_sql);
+
     if ($query) {
-        header('location: product.php');
+        $add_success = "Đã thêm sản phẩm";
+        //header('location: admin.php?type=manager_product');
     } else {
-        echo "Lỗi";
+        $add_error = "Lỗi khi thêm sản phẩm";
     }
 }
 ?>
@@ -80,21 +83,21 @@ if (isset($_POST['name'])) {
                         </div>
                         <div class="form-group">
                             <label for="">CPU:</label>
-                            <input type="text" class="form-control" id="" name="cpu" placeholder="CPU của sản phẩm">
+                            <textarea type="text" class="form-control content_product" id="" name="cpu" placeholder="CPU của sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Ram:</label>
-                            <input type="text" class="form-control" id="" name="ram" placeholder="Ram của sản phẩm">
+                            <textarea type="text" class="form-control content_product" id="" name="ram" placeholder="Ram của sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Ổ cứng:</label>
-                            <input type="text" class="form-control" id="" name="o_cung" placeholder="Ổ cứng của sản phẩm">
+                            <textarea type="text" class="form-control content_product" id="" name="o_cung" placeholder="Ổ cứng của sản phẩm"></textarea>
                         </div>
                     </div>
                     <div>
                         <div class="form-group">
                             <label for="">Card đồ họa:</label>
-                            <input type="text" class="form-control" id="" name="card_do_hoa" placeholder="Card đồ họa của sản phẩm">
+                            <textarea type="text" class="form-control content_product" id="" name="card_do_hoa" placeholder="Card đồ họa của sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Trọng lượng:</label>

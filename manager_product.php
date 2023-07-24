@@ -80,7 +80,7 @@ $result = mysqli_query($conn, "SELECT product.*, hang.name AS 'name_hang' FROM p
                             <td style="text-align: center;"><?php echo $pro['quantity'] ?></td>
                             <td style="text-align: center;"></td>
                             <td>
-                                <button class="button_fixed"><a href="fixed_product.php?id=<?php echo $pro['id'] ?>">Sửa</a></button>
+                                <button class="button_fixed"><a href="admin.php?type=fixed_product&id=<?php echo $pro['id'] ?>">Sửa</a></button>
                                 <button class="button_delete"><a href="remove_product.php?id=<?php echo $pro['id'] ?>">Xóa</a></button>
                                 <button class="button_details"><a href="product_detail.php?id=<?php echo $pro['id'] ?>">Chi tiết</a></button>
                             </td>

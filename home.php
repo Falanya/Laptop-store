@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $sql);
 $total_table = mysqli_num_rows($result);
 
 //Thiết lập số bảng ghi trên một trang
-$limit = 50;
+$limit = 40;
 
 //Lấy trang hiện tại
 $cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
@@ -67,8 +67,13 @@ $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
                     <?php foreach ($result as $info_product) : ?>
                         <div class="content_item">
                             <div class="in_stock">
-                                <i class="far fa-check-circle"></i>
-                                <p>In stock</p>
+                                <?php if ($info_product['status'] == 0) { ?>
+                                    <i class="far fa-check-circle"></i>
+                                    <p>In stock</p>
+                                <?php } else { ?>
+                                    <i style="color: red;" class="fas fa-times-circle"></i>
+                                    <p style="color: red;">Sold out</p>
+                                <?php } ?>
                             </div>
                             <div class="img_laptop">
                                 <a href="product_detail.php?id=<?php echo $info_product['id'] ?>"><img src="./img/<?php echo $info_product['image'] ?>" alt=""></a>
