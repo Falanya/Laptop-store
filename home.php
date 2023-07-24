@@ -129,7 +129,7 @@ $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
             <div class="contact_card">
                 <i class="fas fa-tag"></i>
                 <h3>Khuyến mãi</h3>
-                <p>Giảm giá tới 40% cho sản phẩm mới cho bạn tiết kiệm chi phí.</p>
+                <p>Giảm giá sản phẩm mới cho bạn tiết kiệm chi phí.</p>
             </div>
         </div>
     </div>

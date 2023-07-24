@@ -135,21 +135,21 @@ if (isset($_POST['name'])) {
                         </div>
                         <div class="form-group">
                             <label for="">CPU:</label>
-                            <input value="<?php echo $product['cpu']; ?>" type="text" class="form-control" id="" name="cpu" placeholder="CPU của sản phẩm">
+                            <textarea type="text" class="form-control content_product" id="" name="cpu" placeholder="CPU của sản phẩm"><?php echo $product['cpu']; ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Ram:</label>
-                            <input value="<?php echo $product['ram']; ?>" type="text" class="form-control" id="" name="ram" placeholder="Ram của sản phẩm">
+                            <textarea type="text" class="form-control content_product" id="" name="ram" placeholder="Ram của sản phẩm"><?php echo $product['ram']; ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Ổ cứng:</label>
-                            <input value="<?php echo $product['o_cung']; ?>" type="text" class="form-control" id="" name="o_cung" placeholder="Ổ cứng của sản phẩm">
+                            <textarea type="text" class="form-control content_product" id="" name="o_cung" placeholder="Ổ cứng của sản phẩm"><?php echo $product['o_cung']; ?></textarea>
                         </div>
                     </div>
                     <div>
                         <div class="form-group">
                             <label for="">Card đồ họa:</label>
-                            <input value="<?php echo $product['card_do_hoa']; ?>" type="text" class="form-control" id="" name="card_do_hoa" placeholder="Card đồ họa của sản phẩm">
+                            <textarea type="text" class="form-control content_product" id="" name="card_do_hoa" placeholder="Card đồ họa của sản phẩm"><?php echo $product['card_do_hoa']; ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="">Trọng lượng:</label>
