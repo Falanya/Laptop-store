@@ -83,7 +83,7 @@ $result = mysqli_query($conn, "SELECT product.*, hang.name AS 'name_hang' FROM p
                             <?php } else { ?>
                                 <td style="text-align: center;">Hết hàng</td>
                             <?php } ?>
-                            <td>
+                            <td class="button_fdd">
                                 <button class="button_fixed"><a href="admin.php?type=fixed_product&id=<?php echo $pro['id'] ?>">Sửa</a></button>
                                 <button class="button_delete"><a href="remove_product.php?id=<?php echo $pro['id'] ?>">Xóa</a></button>
                                 <button class="button_details"><a href="product_detail.php?id=<?php echo $pro['id'] ?>">Chi tiết</a></button>

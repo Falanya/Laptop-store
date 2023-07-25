@@ -1315,6 +1315,10 @@ html body::-webkit-scrollbar-thumb {
     text-decoration: none;
 }
 
+.manager_product_frame .manager_product .button_fdd {
+    display: flex;
+}
+
 .manager_product_frame .manager_product .button_fixed,
 .manager_product_frame .manager_product .button_delete {
     margin-right: 10px;
@@ -1464,3 +1468,99 @@ html body::-webkit-scrollbar-thumb {
 }
 
 /*Ket thuc add_product*/
+
+/*Xu li manager_orders*/
+.manager_orders_frame .manager_orders table {
+    box-sizing: border-box;
+    border-collapse: separate;
+    border-spacing: 0;
+    padding: 10px;
+    margin-left: 0px;
+}
+
+.manager_orders_frame .manager_orders table tr th {
+    border: 2px solid #eeeeee;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px;
+}
+
+.manager_orders_frame .manager_orders table tr td {
+    border: 2px solid #eeeeee;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px;
+}
+
+.manager_orders_frame .manager_orders table tr .content_product {
+    width: 35%;
+    text-align: left;
+}
+
+.manager_orders_frame .manager_orders table tr .id_order {
+    width: 2%;
+}
+
+.manager_orders_frame .manager_orders button {
+    padding: 10px;
+    background-color: tomato;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.manager_orders_frame .manager_orders button a {
+    color: white;
+    text-decoration: none;
+}
+
+.manager_orders_frame .manager_orders .order_browsing {
+    margin-right: 10px;
+}
+
+.manager_orders_frame {
+    background-color: white;
+    padding: 10px;
+    height: 100%;
+}
+
+.manager_orders_frame .title_manager_orders h3 {
+    text-align: center;
+    padding: 10px;
+}
+
+.manager_orders_frame .operation_orders .frame_search_orders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manager_orders_frame .operation_orders {
+    padding-bottom: 30px;
+}
+
+.manager_orders_frame .operation_orders #search_box {
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+.manager_orders_frame .search_orders #search_text {
+    padding: 10px 10px;
+    outline: none;
+    width: 300px;
+    font-size: 15px;
+    border: none;
+    border-radius: 50%;
+}
+
+.manager_orders_frame .search_orders #search_submit {
+    border: none;
+    padding: 10px 10px;
+    background: white;
+    border-radius: 50%;
+    font-size: 15px;
+}
+
+/*Ket thuc manager_orders*/
