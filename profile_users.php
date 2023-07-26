@@ -81,7 +81,7 @@ if (isset($_POST['user_name'])) {
                                     <p><label class="title_info" for="">Địa chỉ:</label></p>
                                 </div>
                                 <div class="form-group info_form">
-                                    <input value="<?php echo $user['user_name']; ?> (Không thể thay đổi)" type="text" class="form-control" id="" name="user_name" placeholder="Nhập tài khoản người dùng cần sửa" readonly>
+                                    <input value="<?php echo $user['user_name']; ?>" type="text" class="form-control" id="" name="user_name" placeholder="Nhập tài khoản người dùng cần sửa" readonly>
                                     <input value="<?php echo $user['name']; ?>" type="text" class="form-control" id="" name="name" placeholder="Nhập tên người dùng cần sửa">
                                     <input value="<?php echo $user['sdt']; ?>" type="text" class="form-control" id="" name="sdt" placeholder="Nhập số điện thoại cần sửa">
                                     <input value="<?php echo $user['email']; ?>" type="text" class="form-control" id="" name="email" placeholder="Nhập email cần sửa">
