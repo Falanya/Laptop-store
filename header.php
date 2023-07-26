@@ -1,5 +1,5 @@
 <?php
-include './cart-function.php';
+//include './cart-function.php';
 $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 

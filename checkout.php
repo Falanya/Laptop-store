@@ -60,11 +60,11 @@ if (isset($_POST['name'])) {
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Số điện thoại</label>
-                            <input name="sdt" type="text" class="form-control" placeholder="Nhập số điện thoại của bạn" required="required">
+                            <input name="sdt" value="<?php echo $user['sdt'] ?>" type="text" class="form-control" placeholder="Nhập số điện thoại của bạn" required="required">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Địa chỉ nhận hàng</label>
-                            <input name="address" type="text" class="form-control" placeholder="Nhập địa chỉ của bạn" required="required">
+                            <input name="address" value="<?php echo $user['address'] ?>" type="text" class="form-control" placeholder="Nhập địa chỉ của bạn" required="required">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Note</label>
