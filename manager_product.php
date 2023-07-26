@@ -13,7 +13,7 @@ $result = mysqli_query($conn, $sql);
 $total_table = mysqli_num_rows($result);
 
 //Thiết lập số bảng ghi trên một trang
-$limit = 10;
+$limit = 30;
 
 //Lấy trang hiện tại
 $cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
@@ -96,16 +96,16 @@ $result = mysqli_query($conn, "SELECT product.*, hang.name AS 'name_hang' FROM p
                 <div class="number">
                     <ul>
                         <?php if ($cr_page - 1 > 0) { ?>
-                            <li class="number1"><a href="admin.php?type=1&page=<?php echo $cr_page - 1 ?>"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="number1"><a href="admin.php?type=manager_product&page=<?php echo $cr_page - 1 ?>"><i class="fas fa-chevron-left"></i></a></li>
                         <?php } ?>
                         <!--<li class="number1"><a href="#">2</a></li>
                     <li class="number1"><a href="#">3</a></li>
                     <li class="number1"><a href="#">4</a></li>-->
                         <?php for ($i = 1; $i <= $page; $i++) { ?>
-                            <li class="number1 <?php echo (($cr_page == $i) ? 'active' : '') ?>"><a href="admin.php?type=1&page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                            <li class="number1 <?php echo (($cr_page == $i) ? 'active' : '') ?>"><a href="admin.php?type=manager_product&page=<?php echo $i ?>"><?php echo $i ?></a></li>
                         <?php } ?>
                         <?php if ($cr_page + 1 <= $page) { ?>
-                            <li class="number1"><a href="admin.php?type=1&page=<?php echo $cr_page + 1 ?>"><i class="fas fa-chevron-right"></i></a></li>
+                            <li class="number1"><a href="admin.php?type=manager_product&page=<?php echo $cr_page + 1 ?>"><i class="fas fa-chevron-right"></i></a></li>
                         <?php } ?>
                     </ul>
                 </div>

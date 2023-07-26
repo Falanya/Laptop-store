@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2023 at 11:12 AM
+-- Generation Time: Jul 26, 2023 at 02:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -63,6 +63,17 @@ CREATE TABLE `orders` (
   `time_order` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `id_users`, `total_price`, `note`, `status`, `address`, `sdt`, `time_order`) VALUES
+(18, 8, 35.980, 'Hàng dễ vỡ', 0, 'Hồ Chí Minh', '3525235', '2023-07-25 21:38:50'),
+(19, 8, 164.930, 'Hàng dễ vỡ', 0, 'Hồ Chí Minh', '35235235', '2023-07-25 23:48:02'),
+(20, 8, 62.970, 'Hàng dễ vỡ', 0, '168/6 Trường Chinh, phường 13, quận Tân Bình, Thành phố Hồ Chí Minh', '12345678901', '2023-07-26 00:34:43'),
+(21, 8, 34.980, 'Hàng khó vỡ', 1, 'Hồ Chí Minh', '0901284413', '2023-07-26 15:10:40'),
+(22, 7, 52.970, 'hàng dễ mất', 1, 'Viet Nam', '090923124', '2023-07-26 18:05:52');
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +86,27 @@ CREATE TABLE `orders_detail` (
   `quantity` text NOT NULL,
   `price` float(10,3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `orders_detail`
+--
+
+INSERT INTO `orders_detail` (`id_order`, `id_product`, `quantity`, `price`) VALUES
+(18, 13, '1', 16.990),
+(18, 15, '1', 18.990),
+(19, 11, '2', 27.990),
+(19, 12, '1', 37.990),
+(19, 13, '1', 16.990),
+(19, 15, '1', 18.990),
+(19, 17, '1', 19.990),
+(19, 20, '1', 14.990),
+(20, 11, '1', 27.990),
+(20, 17, '1', 19.990),
+(20, 20, '1', 14.990),
+(21, 17, '1', 19.990),
+(21, 20, '1', 14.990),
+(22, 15, '2', 18.990),
+(22, 20, '1', 14.990);
 
 -- --------------------------------------------------------
 
@@ -137,10 +169,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `user_name`, `name`, `email`, `password`, `address`, `sdt`, `avatar`, `is_online`, `last_activity`) VALUES
-(7, 0, 'trolface', 'Trolface Aoi', 'trolface@gmail.com', '$2y$10$WwqW7CNYQrIMNfdqC6AD5O/qsnhYuVwrgChABdpmjMuLRJ1HQdrO6', 'Viet Nam', '090923124', 'be7.jpg', 0, '2023-07-23 20:39:03'),
-(8, 1, 'shuna', 'Shuna', 'shuna@gmail.com', '$2y$10$21FPUm7B97gntNlv2aytAu8ausMjWQSSEa6VqUvy73LALwQzFS.u2', 'Việt Nam', '0901284412', 'be7.jpg', 0, '2023-07-24 23:41:27'),
-(15, 0, 'nhatngu', 'nhat ngu', 'nhatngu@gmail.com', '$2y$10$jem6IJF0T9PT0IPA8.9f1OBXn952rqkRdr3cbk8PZpGn/2uYI9zg.', 'viet nam', '214325235', 'boNhat.jpg', 0, '2023-07-16 06:06:26'),
-(16, 0, 'thuytien', 'Bé Tiên Buồi To', 'thuytien@gmail.com', '$2y$10$xr.H7HI673tsZi6Dghmj6e0QfxMn.7cMfYSJzQBArxi8uzXtEN662', 'Việt Nam', '21423523', 'be7.jpg', 0, '2023-07-16 06:06:26');
+(7, 0, 'trolface', 'Trolface', 'trolface@gmail.com', '$2y$10$WwqW7CNYQrIMNfdqC6AD5O/qsnhYuVwrgChABdpmjMuLRJ1HQdrO6', 'Viet Nam', '090923124', 'be7.jpg', 0, '2023-07-26 18:35:36'),
+(8, 1, 'shuna', 'Shuna', 'shuna@gmail.com', '$2y$10$21FPUm7B97gntNlv2aytAu8ausMjWQSSEa6VqUvy73LALwQzFS.u2', '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', 'be7.jpg', 1, '2023-07-26 19:13:09');
 
 --
 -- Indexes for dumped tables
@@ -195,7 +225,7 @@ ALTER TABLE `hang`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `product`
