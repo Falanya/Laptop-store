@@ -1,6 +1,5 @@
 <?php
 include './setting/connect.php';
-include './cart-function.php';
 
 //$user = [];
 $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
@@ -28,7 +27,6 @@ $start = ($cr_page - 1) * $limit;
 //Query sử dụng limit
 $result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $start,$limit");
 
-$cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 
 ?>
 

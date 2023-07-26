@@ -73,7 +73,7 @@ $onlineUsers = $rowOnlineUsers['online_users'];
                         <ul class="dropdown-menu login_menu">
                             <!--<li><a href="./login.php">Đăng kí</a></li>
                             <li><a href="./dangky.php">Đăng nhập</a></li>-->
-                            <li><a href="#">Thông tin</a></li>
+                            <li><a href="profile_users.php?v=<?php echo $user['name'] ?>">Thông tin</a></li>
                             <?php if ($_SESSION['user']['role'] == 1) { ?>
                                 <li><a href="admin.php">Quản lí</a></li>
                             <?php } ?>

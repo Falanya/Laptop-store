@@ -1,7 +1,7 @@
 <?php
 include './setting/connect.php';
 //$user = [];
-$user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
+//$user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
 //$user = $_SESSION['user'];
 
 $product_id = $_GET['id']; // Lấy ID sản phẩm từ URL
@@ -31,7 +31,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "Không tìm thấy sản phẩm.";
 }
-$cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
 
 ?>
 

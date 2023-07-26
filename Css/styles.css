@@ -1564,3 +1564,132 @@ html body::-webkit-scrollbar-thumb {
 }
 
 /*Ket thuc manager_orders*/
+
+/*Xu li profile_users*/
+.frame_profile_users {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.frame_profile_users .profile_users {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+.frame_profile_users .profile_users .account_name {
+    display: flex;
+}
+
+.frame_profile_users .profile_users .account_name {
+    border-bottom: 2px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.frame_profile_users .profile_users .profile_users_left .title_account {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.frame_profile_users .profile_users .profile_users_left .account_name img {
+    width: 55px;
+    height: 55px;
+    border-radius: 30px;
+}
+
+.frame_profile_users .profile_users .account_name p {
+    font-weight: 600;
+    font-size: 20px;
+    padding: 15px;
+}
+
+.frame_profile_users .profile_users_left {
+    background-color: white;
+}
+
+.frame_profile_users .profile_users .profile_users_left .title_account ul li {
+    list-style: none;
+}
+
+.frame_profile_users .profile_users .profile_users_left .title_account ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.frame_profile_users .profile_users .profile_users_left .title_account ul li i {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.frame_profile_users .profile_users .profile_users_right {
+    background-color: white;
+    width: 65%;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r {
+    padding: 10px;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r h2 {
+    text-align: center;
+    padding: 10px;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form label,
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form input {
+    margin: 5px;
+    font-size: 17px;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form .frame_form {
+    display: flex;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form .frame_form .title_form {
+    width: 76%;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form .frame_form p {
+    padding: 11px;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form .frame_form .info_form input {
+    padding: 7px;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form .frame_form .info_form {
+    margin-left: 10px;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form .frame_form .info_form input {
+    width: 550px;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form .button_profile button {
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    background-color: tomato;
+    color: white;
+    font-weight: 600;
+}
+
+.frame_profile_users .profile_users .profile_users_right .frame_p_u_r form .button_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Ket thuc profile_users*/
