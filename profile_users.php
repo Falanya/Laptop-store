@@ -56,9 +56,13 @@ if (isset($_POST['user_name'])) {
                         </div>
                         <div class="title_account">
                             <ul>
-                                <li>
+                                <li style="background-color: #ececec;">
                                     <i class="fas fa-user"></i>
                                     <a href="profile_users.php?v=<?php echo $user['name'] ?>">Thông tin</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <a href="orders_users.php?v=<?php echo $user['name'] ?>">Quản lý đơn hàng</a>
                                 </li>
                                 <li>
                                     <i class="fas fa-sign-out-alt"></i>
