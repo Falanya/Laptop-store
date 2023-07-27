@@ -26,7 +26,7 @@ $start = ($cr_page - 1) * $limit;
 
 $user_name = $_SESSION['user']['name'];
 
-$user_id = $_SESSION['user']['id']; // Giả sử trường 'id' tồn tại trong bảng 'users'
+$user_id = $_SESSION['user']['id'];
 $orders = mysqli_query($conn, "SELECT o.*, GROUP_CONCAT(CONCAT(p.name, ' (x', od.quantity, ')')) AS product_names FROM orders AS o
 JOIN orders_detail AS od ON o.id = od.id_order
 JOIN product AS p ON od.id_product = p.id
@@ -67,6 +67,10 @@ LIMIT $start, $limit");
                                 <li>
                                     <i class="fas fa-user"></i>
                                     <a href="profile_users.php?v=<?php echo $user['name'] ?>">Thông tin</a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-lock"></i>
+                                    <a href="changer_password.php?v=<?php echo $user['name'] ?>">Đổi mật khẩu</a>
                                 </li>
                                 <li style="background-color: #ececec;">
                                     <i class="fas fa-shopping-bag"></i>

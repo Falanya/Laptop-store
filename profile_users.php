@@ -61,6 +61,10 @@ if (isset($_POST['user_name'])) {
                                     <a href="profile_users.php?v=<?php echo $user['name'] ?>">Thông tin</a>
                                 </li>
                                 <li>
+                                    <i class="fas fa-lock"></i>
+                                    <a href="changer_password.php?v=<?php echo $user['name'] ?>">Đổi mật khẩu</a>
+                                </li>
+                                <li>
                                     <i class="fas fa-shopping-bag"></i>
                                     <a href="orders_users.php?v=<?php echo $user['name'] ?>">Quản lý đơn hàng</a>
                                 </li>

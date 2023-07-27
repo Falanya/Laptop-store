@@ -1694,6 +1694,13 @@ html body::-webkit-scrollbar-thumb {
 
 /*Ket thuc profile_users*/
 
+/*Xu li changer_password*/
+.frame_profile_users .profile_users_right .notification_changer_password {
+    margin-top: 20px;
+}
+
+/*Ket thuc changer_password*/
+
 /*Xu li orders_users*/
 .profile_users_right .frame_p_u_r .content_orders table {
     box-sizing: border-box;

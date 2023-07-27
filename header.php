@@ -32,7 +32,7 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
         </div>
         <div class="header_accout">
             <ul>
-                <li><a href="#"><i class="fas fa-search"></a></i></li>
+                <li><a href="search.php"><i class="fas fa-search"></a></i></li>
                 <li class="cart">
                     <a href="./view-cart.php"><i class="fas fa-shopping-cart"></a></i>
                     <span class="number_cart"><?php echo count($cart) ?></span> <!-- thay count($cart) bằng total_item($cart) nếu muốn hiển thị số sản phẩm theo số lượng -->

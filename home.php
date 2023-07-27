@@ -50,8 +50,8 @@ $result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $sta
     <!--Area of search-->
     <div class="search">
         <div class="search_frame">
-            <form action="" id="search_box" method="POST" role="form">
-                <input id="search_text" name="searchss" type="text" placeholder="Search...">
+            <form action="search.php" id="search_box" method="GET" role="form">
+                <input id="search_text" name="product_name" type="text" placeholder="Nhập tên sản phẩm cần tìm...">
                 <button id="search_submit" type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
