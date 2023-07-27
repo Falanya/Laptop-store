@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2023 at 02:15 PM
+-- Generation Time: Jul 27, 2023 at 10:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -63,17 +63,6 @@ CREATE TABLE `orders` (
   `time_order` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id`, `id_users`, `total_price`, `note`, `status`, `address`, `sdt`, `time_order`) VALUES
-(18, 8, 35.980, 'Hàng dễ vỡ', 0, 'Hồ Chí Minh', '3525235', '2023-07-25 21:38:50'),
-(19, 8, 164.930, 'Hàng dễ vỡ', 0, 'Hồ Chí Minh', '35235235', '2023-07-25 23:48:02'),
-(20, 8, 62.970, 'Hàng dễ vỡ', 0, '168/6 Trường Chinh, phường 13, quận Tân Bình, Thành phố Hồ Chí Minh', '12345678901', '2023-07-26 00:34:43'),
-(21, 8, 34.980, 'Hàng khó vỡ', 1, 'Hồ Chí Minh', '0901284413', '2023-07-26 15:10:40'),
-(22, 7, 52.970, 'hàng dễ mất', 1, 'Viet Nam', '090923124', '2023-07-26 18:05:52');
-
 -- --------------------------------------------------------
 
 --
@@ -86,27 +75,6 @@ CREATE TABLE `orders_detail` (
   `quantity` text NOT NULL,
   `price` float(10,3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `orders_detail`
---
-
-INSERT INTO `orders_detail` (`id_order`, `id_product`, `quantity`, `price`) VALUES
-(18, 13, '1', 16.990),
-(18, 15, '1', 18.990),
-(19, 11, '2', 27.990),
-(19, 12, '1', 37.990),
-(19, 13, '1', 16.990),
-(19, 15, '1', 18.990),
-(19, 17, '1', 19.990),
-(19, 20, '1', 14.990),
-(20, 11, '1', 27.990),
-(20, 17, '1', 19.990),
-(20, 20, '1', 14.990),
-(21, 17, '1', 19.990),
-(21, 20, '1', 14.990),
-(22, 15, '2', 18.990),
-(22, 20, '1', 14.990);
 
 -- --------------------------------------------------------
 
@@ -122,6 +90,7 @@ CREATE TABLE `product` (
   `price` float(10,3) DEFAULT 0.000,
   `sale_price` float(10,3) DEFAULT 0.000,
   `id_hang` int(11) DEFAULT NULL,
+  `category` text NOT NULL,
   `cpu` text DEFAULT NULL,
   `ram` text DEFAULT NULL,
   `o_cung` text DEFAULT NULL,
@@ -136,13 +105,13 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `image`, `quantity`, `price`, `sale_price`, `id_hang`, `cpu`, `ram`, `o_cung`, `card_do_hoa`, `trong_luong`, `mau_sac`, `kich_thuoc`, `status`) VALUES
-(11, 'Laptop Gaming Legion 5 15ARH7H 82RE0036VN', 'laptop1.png', '100', 43.990, 27.990, 1, 'AMD Ryzen 7 6800H (8C / 16T, 3.2 / 4.7GHz, 4MB L2 / 16MB L3)', '16GB (8x2) DDR5 4800MHz (2x SO-DIMM socket, up to 16GB SDRAM)', '512GB SSD M.2 2280 PCIe 4.0x4 NVMe (2 slots)', 'NVIDIA GeForce RTX 3050 Ti 4GB GDDR6, Boost Clock 1695MHz, TGP 95W', '2.35 kg', 'Storm Grey', '358.8 x 262.35 x 19.99 mm', 1),
-(12, 'Laptop gaming ASUS ROG Strix G16 G614JU N3135W', 'laptop2.jpg', '100', 39.990, 37.990, 3, 'Intel® Core™ i5-13450HX Processor 2.4 GHz (20M  Cache, up to 4.6 GHz, 10 cores: 6 P-cores and 4 E-cores)', '8GB (1x8GB) DDR5 4800MHz  (2x slots, up to 32GB)', '512GB M.2 NVMe PCIe 4.0 SSD (Trống 1 slot M.2 NVMe)', 'NVIDIA® GeForce RTX™ 4050 Laptop GPU 6GB GDDR6,MUX Switch + Optimus, ROG Boost: 2420MHz* at 140W (2370MHz Boost Clock+50MHz OC, 115W+25W Dynamic Boost)', '2.5 kg', 'Eclipse Gray', '35.4 x 26.4 x 2.26 ~ 3.04 cm', 1),
-(13, 'Laptop ASUS Vivobook 14X OLED A1403ZA KM066W', 'laptop3.jpg', '100', 20.490, 16.990, 3, 'Intel® Core™ i5-12500H Processor 2.5 GHz (18M Cache, up to 4.5 GHz, 4P+8E cores)', '8GB (Onboard) DDR4 3200MHz (Còn 1 slot SO-DIMM, nâng cấp tối đa 16GB)', '512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, support M.2 2280 PCIe 3.0x4)', 'Intel Iris Xe Graphics (with dual channel memory), Intel® UHD Graphics', '1.6 kg', 'Quiet Blue', '31.71 x 22.20 x 1.99 cm', 1),
-(15, 'Laptop Lenovo Ideapad Gaming 3 15IAH7 82S9006YVN', 'laptop4.jpg', '100', 26.990, 18.990, 1, 'Intel Core i5-12500H, 12C (4P + 8E) / 16T, P-core 2.5 / 4.5GHz, E-core 1.8 / 3.3GHz, 18MB', '1 x 8GB DDR4 3200MHz (2x SO-DIMM socket, up to 16GB SDRAM)', '512GB SSD M.2 2242 PCIe 4.0x4 NVMe (2 Slots)', 'NVIDIA GeForce RTX 3050 4GB GDDR6, Boost Clock 1740MHz, TGP 85W', '2.315 kg', 'Onyx Grey', '359.6 x 266.4 x 21.8 mm', 1),
-(17, 'Laptop Gaming Acer Nitro 5 Eagle AN515 57 53F9', 'laptop5.jpg', '100', 25.990, 19.990, 2, 'Intel® Core i5-11400H upto 4.50 GHz, 6 nhân 12 luồng', '8GB DDR4 3200MHz (2 slot SO-DIMM socket, nâng cấp tối đa 32GB SDRAM)', '512GB SSD M.2 PCIE (nâng cấp tối đa 1TB SSD PCIe Gen3, 8 Gb/s, NVMe và 2TB HDD 2.5-inch 5400 RPM) (Còn trống 1 khe SSD M.2 PCIE và 1 khe 2.5\" SATA)', 'NVIDIA® GeForce RTX™ 3050 4GB GDDR6', '2.20 kg', 'Black', '363.4 x 255 x 23.9 mm', 1),
-(20, 'Laptop gaming MSI GF63 Thin 11SC 664VN', 'laptop6.jpg', '100', 21.990, 14.990, 6, 'Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB', '8GB (8x1) DDR4 3200MHz (2x SO-DIMM socket, up to 64GB SDRAM)', '512GB NVMe PCIe Gen3x4 SSD (1 slot)', 'NVIDIA GeForce GTX1650 4GB GDDR6 with Max-Q Design + Intel UHD Graphics', '1.86 kg', 'Black', '359 x 254 x 21.7 mm', 1);
+INSERT INTO `product` (`id`, `name`, `image`, `quantity`, `price`, `sale_price`, `id_hang`, `category`, `cpu`, `ram`, `o_cung`, `card_do_hoa`, `trong_luong`, `mau_sac`, `kich_thuoc`, `status`) VALUES
+(11, 'Laptop Gaming Legion 5 15ARH7H 82RE0036VN', 'laptop1.png', '100', 43.990, 27.990, 1, 'gaming', 'AMD Ryzen 7 6800H (8C / 16T, 3.2 / 4.7GHz, 4MB L2 / 16MB L3)', '16GB (8x2) DDR5 4800MHz (2x SO-DIMM socket, up to 16GB SDRAM)', '512GB SSD M.2 2280 PCIe 4.0x4 NVMe (2 slots)', 'NVIDIA GeForce RTX 3050 Ti 4GB GDDR6, Boost Clock 1695MHz, TGP 95W', '2.35 kg', 'Storm Grey', '358.8 x 262.35 x 19.99 mm', 1),
+(12, 'Laptop gaming ASUS ROG Strix G16 G614JU N3135W', 'laptop2.jpg', '100', 39.990, 37.990, 3, 'gaming', 'Intel® Core™ i5-13450HX Processor 2.4 GHz (20M  Cache, up to 4.6 GHz, 10 cores: 6 P-cores and 4 E-cores)', '8GB (1x8GB) DDR5 4800MHz  (2x slots, up to 32GB)', '512GB M.2 NVMe PCIe 4.0 SSD (Trống 1 slot M.2 NVMe)', 'NVIDIA® GeForce RTX™ 4050 Laptop GPU 6GB GDDR6,MUX Switch + Optimus, ROG Boost: 2420MHz* at 140W (2370MHz Boost Clock+50MHz OC, 115W+25W Dynamic Boost)', '2.5 kg', 'Eclipse Gray', '35.4 x 26.4 x 2.26 ~ 3.04 cm', 1),
+(13, 'Laptop ASUS Vivobook 14X OLED A1403ZA KM066W', 'laptop3.jpg', '100', 20.490, 16.990, 3, 'gaming', 'Intel® Core™ i5-12500H Processor 2.5 GHz (18M Cache, up to 4.5 GHz, 4P+8E cores)', '8GB (Onboard) DDR4 3200MHz (Còn 1 slot SO-DIMM, nâng cấp tối đa 16GB)', '512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, support M.2 2280 PCIe 3.0x4)', 'Intel Iris Xe Graphics (with dual channel memory), Intel® UHD Graphics', '1.6 kg', 'Quiet Blue', '31.71 x 22.20 x 1.99 cm', 1),
+(15, 'Laptop Lenovo Ideapad Gaming 3 15IAH7 82S9006YVN', 'laptop4.jpg', '100', 26.990, 18.990, 1, 'gaming', 'Intel Core i5-12500H, 12C (4P + 8E) / 16T, P-core 2.5 / 4.5GHz, E-core 1.8 / 3.3GHz, 18MB', '1 x 8GB DDR4 3200MHz (2x SO-DIMM socket, up to 16GB SDRAM)', '512GB SSD M.2 2242 PCIe 4.0x4 NVMe (2 Slots)', 'NVIDIA GeForce RTX 3050 4GB GDDR6, Boost Clock 1740MHz, TGP 85W', '2.315 kg', 'Onyx Grey', '359.6 x 266.4 x 21.8 mm', 1),
+(17, 'Laptop Gaming Acer Nitro 5 Eagle AN515 57 53F9', 'laptop5.jpg', '100', 25.990, 19.990, 2, 'gaming', 'Intel® Core i5-11400H upto 4.50 GHz, 6 nhân 12 luồng', '8GB DDR4 3200MHz (2 slot SO-DIMM socket, nâng cấp tối đa 32GB SDRAM)', '512GB SSD M.2 PCIE (nâng cấp tối đa 1TB SSD PCIe Gen3, 8 Gb/s, NVMe và 2TB HDD 2.5-inch 5400 RPM) (Còn trống 1 khe SSD M.2 PCIE và 1 khe 2.5\" SATA)', 'NVIDIA® GeForce RTX™ 3050 4GB GDDR6', '2.20 kg', 'Black', '363.4 x 255 x 23.9 mm', 1),
+(20, 'Laptop gaming MSI GF63 Thin 11SC 664VN', 'laptop6.jpg', '100', 21.990, 14.990, 6, 'hoc-tap-van-phong', 'Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB', '8GB (8x1) DDR4 3200MHz (2x SO-DIMM socket, up to 64GB SDRAM)', '512GB NVMe PCIe Gen3x4 SSD (1 slot)', 'NVIDIA GeForce GTX1650 4GB GDDR6 with Max-Q Design + Intel UHD Graphics', '1.86 kg', 'Black', '359 x 254 x 21.7 mm', 1);
 
 -- --------------------------------------------------------
 
@@ -169,8 +138,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `user_name`, `name`, `email`, `password`, `address`, `sdt`, `avatar`, `is_online`, `last_activity`) VALUES
-(7, 0, 'trolface', 'Trolface', 'trolface@gmail.com', '$2y$10$WwqW7CNYQrIMNfdqC6AD5O/qsnhYuVwrgChABdpmjMuLRJ1HQdrO6', 'Viet Nam', '090923124', 'be7.jpg', 0, '2023-07-26 18:35:36'),
-(8, 1, 'shuna', 'Shuna', 'shuna@gmail.com', '$2y$10$21FPUm7B97gntNlv2aytAu8ausMjWQSSEa6VqUvy73LALwQzFS.u2', '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', 'be7.jpg', 1, '2023-07-26 19:13:09');
+(8, 1, 'admin', 'Admin', 'admin@gmail.com', '$2y$10$okTUmsrA1B.TRAFOBP9XEec../.pdZpz9jFYXrOz6diQv5K0/IJoW', '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', 'be7.jpg', 1, '2023-07-28 02:17:46'),
+(19, 0, 'trolface', 'Tuấn Đẹt', 'trolface@gmail.com', '$2y$10$KnoUgOIwRhZ4qt07O9pSu.sox7AffcwqWy1Sy/hjYR6KOemRbFggG', 'Hồ Chí Minh', '0102030405', 'be7.jpg', 0, '2023-07-28 02:17:37');
 
 --
 -- Indexes for dumped tables
@@ -225,7 +194,7 @@ ALTER TABLE `hang`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -237,7 +206,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables

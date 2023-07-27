@@ -22,9 +22,9 @@ $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
         </div>
         <div class="header_menu" style="font-weight: 600;">
             <ul>
-                <li><a href="#">Gaming</a></li>
-                <li><a href="#">MacBook</a></li>
-                <li><a href="#">Học tập, văn phòng</a></li>
+                <li><a href="collections_gaming.php?category=gaming">Gaming</a></li>
+                <li><a href="collections_macbook.php?category=macbook">MacBook</a></li>
+                <li><a href="collections_hoc_tap.php?category=hoc-tap-van-phong">Học tập, văn phòng</a></li>
             </ul>
         </div>
         <div class="deals">
