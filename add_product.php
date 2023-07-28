@@ -16,6 +16,7 @@ if (isset($_POST['name'])) {
     $kich_thuoc = $_POST['kich_thuoc'];
     $price = $_POST['price'];
     $sale_price = $_POST['sale_price'];
+    $category = $_POST['category'];
     $id_hang = $_POST['id_hang'];
     $quantity = $_POST['quantity'];
     $status = $_POST['status'];
@@ -25,7 +26,7 @@ if (isset($_POST['name'])) {
         $file_name = $file['name'];
         move_uploaded_file($file['tmp_name'], 'img/' . $file_name);
     }
-    $add_sql = "INSERT INTO product(name,image,quantity,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc,price,sale_price,status) VALUES ('$name','$file_name','$quantity','$id_hang','$cpu','$ram','$o_cung','$card_do_hoa','$trong_luong','$mau_sac','$kich_thuoc','$price','$sale_price','$status')";
+    $add_sql = "INSERT INTO product(name,image,quantity,id_hang,cpu,ram,o_cung,card_do_hoa,trong_luong,mau_sac,kich_thuoc,price,sale_price,category,status) VALUES ('$name','$file_name','$quantity','$id_hang','$cpu','$ram','$o_cung','$card_do_hoa','$trong_luong','$mau_sac','$kich_thuoc','$price','$sale_price','$category','$status')";
 
     $query = mysqli_query($conn, $add_sql);
 
@@ -119,6 +120,10 @@ if (isset($_POST['name'])) {
                         <div class="form-group">
                             <label class="title_info" for="">Giá khuyến mãi:</label>
                             <input type="text" class="form-control" id="" name="sale_price" placeholder="Nhập giá khuyến mãi">
+                        </div>
+                        <div class="form-group">
+                            <label class="title_info" for="">Loại sản phẩm:</label>
+                            <input type="text" class="form-control" id="" name="category" placeholder="Nhập loại vd: gaming, hoc-tap,...">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Trạng thái:</label>

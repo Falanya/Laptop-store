@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2023 at 10:04 PM
+-- Generation Time: Jul 28, 2023 at 09:10 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -63,6 +63,13 @@ CREATE TABLE `orders` (
   `time_order` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `id_users`, `total_price`, `note`, `status`, `address`, `sdt`, `time_order`) VALUES
+(25, 8, 14.990, 'égsrgdrh', 1, '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', '2023-07-28 12:45:00');
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +82,13 @@ CREATE TABLE `orders_detail` (
   `quantity` text NOT NULL,
   `price` float(10,3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `orders_detail`
+--
+
+INSERT INTO `orders_detail` (`id_order`, `id_product`, `quantity`, `price`) VALUES
+(25, 20, '1', 14.990);
 
 -- --------------------------------------------------------
 
@@ -111,7 +125,8 @@ INSERT INTO `product` (`id`, `name`, `image`, `quantity`, `price`, `sale_price`,
 (13, 'Laptop ASUS Vivobook 14X OLED A1403ZA KM066W', 'laptop3.jpg', '100', 20.490, 16.990, 3, 'gaming', 'Intel® Core™ i5-12500H Processor 2.5 GHz (18M Cache, up to 4.5 GHz, 4P+8E cores)', '8GB (Onboard) DDR4 3200MHz (Còn 1 slot SO-DIMM, nâng cấp tối đa 16GB)', '512GB M.2 NVMe™ PCIe® 3.0 SSD (1 slot, support M.2 2280 PCIe 3.0x4)', 'Intel Iris Xe Graphics (with dual channel memory), Intel® UHD Graphics', '1.6 kg', 'Quiet Blue', '31.71 x 22.20 x 1.99 cm', 1),
 (15, 'Laptop Lenovo Ideapad Gaming 3 15IAH7 82S9006YVN', 'laptop4.jpg', '100', 26.990, 18.990, 1, 'gaming', 'Intel Core i5-12500H, 12C (4P + 8E) / 16T, P-core 2.5 / 4.5GHz, E-core 1.8 / 3.3GHz, 18MB', '1 x 8GB DDR4 3200MHz (2x SO-DIMM socket, up to 16GB SDRAM)', '512GB SSD M.2 2242 PCIe 4.0x4 NVMe (2 Slots)', 'NVIDIA GeForce RTX 3050 4GB GDDR6, Boost Clock 1740MHz, TGP 85W', '2.315 kg', 'Onyx Grey', '359.6 x 266.4 x 21.8 mm', 1),
 (17, 'Laptop Gaming Acer Nitro 5 Eagle AN515 57 53F9', 'laptop5.jpg', '100', 25.990, 19.990, 2, 'gaming', 'Intel® Core i5-11400H upto 4.50 GHz, 6 nhân 12 luồng', '8GB DDR4 3200MHz (2 slot SO-DIMM socket, nâng cấp tối đa 32GB SDRAM)', '512GB SSD M.2 PCIE (nâng cấp tối đa 1TB SSD PCIe Gen3, 8 Gb/s, NVMe và 2TB HDD 2.5-inch 5400 RPM) (Còn trống 1 khe SSD M.2 PCIE và 1 khe 2.5\" SATA)', 'NVIDIA® GeForce RTX™ 3050 4GB GDDR6', '2.20 kg', 'Black', '363.4 x 255 x 23.9 mm', 1),
-(20, 'Laptop gaming MSI GF63 Thin 11SC 664VN', 'laptop6.jpg', '100', 21.990, 14.990, 6, 'hoc-tap-van-phong', 'Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB', '8GB (8x1) DDR4 3200MHz (2x SO-DIMM socket, up to 64GB SDRAM)', '512GB NVMe PCIe Gen3x4 SSD (1 slot)', 'NVIDIA GeForce GTX1650 4GB GDDR6 with Max-Q Design + Intel UHD Graphics', '1.86 kg', 'Black', '359 x 254 x 21.7 mm', 1);
+(20, 'Laptop gaming MSI GF63 Thin 11SC 664VN', 'laptop6.jpg', '100', 21.990, 14.990, 6, 'gaming', 'Intel Core i5-11400H 2.2GHz up to 4.5GHz 12MB', '8GB (8x1) DDR4 3200MHz (2x SO-DIMM socket, up to 64GB SDRAM)', '512GB NVMe PCIe Gen3x4 SSD (1 slot)', 'NVIDIA GeForce GTX1650 4GB GDDR6 with Max-Q Design + Intel UHD Graphics', '1.86 kg', 'Black', '359 x 254 x 21.7 mm', 1),
+(56, 'Laptop ASUS VivoBook Pro 15 OLED K6502VU MA089W', 'laptop7.jpg', '100', 34.990, 37.990, 3, 'hoc-tap-van-phong', 'Intel® Core™ i5-13500H Processor 2.6 GHz (18MB Cache, up to 4.7 GHz, 12 cores, 16 Threads)', '16GB DDR5 (8GB Onboard + 8GB Sodimm, up to 24GB SDRAM)', '512GB M.2 NVMe™ PCIe® 4.0 SSD', 'NVIDIA® Geforce RTX™ 4050 6GB GDDR6 + Intel® Iris Xe Graphics', '1.8kg', 'Cool Silver ', '35.63 x 23.53 x 1.99 ~ 2.00 cm', 1);
 
 -- --------------------------------------------------------
 
@@ -138,7 +153,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `user_name`, `name`, `email`, `password`, `address`, `sdt`, `avatar`, `is_online`, `last_activity`) VALUES
-(8, 1, 'admin', 'Admin', 'admin@gmail.com', '$2y$10$okTUmsrA1B.TRAFOBP9XEec../.pdZpz9jFYXrOz6diQv5K0/IJoW', '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', 'be7.jpg', 1, '2023-07-28 02:17:46'),
+(8, 1, 'admin', 'Admin', 'admin@gmail.com', '$2y$10$okTUmsrA1B.TRAFOBP9XEec../.pdZpz9jFYXrOz6diQv5K0/IJoW', '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', 'be7.jpg', 1, '2023-07-28 14:07:24'),
 (19, 0, 'trolface', 'Tuấn Đẹt', 'trolface@gmail.com', '$2y$10$KnoUgOIwRhZ4qt07O9pSu.sox7AffcwqWy1Sy/hjYR6KOemRbFggG', 'Hồ Chí Minh', '0102030405', 'be7.jpg', 0, '2023-07-28 02:17:37');
 
 --
@@ -194,13 +209,13 @@ ALTER TABLE `hang`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `users`
