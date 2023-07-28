@@ -1,13 +1,34 @@
 <?php
 include './setting/connect.php';
 
-//$user = [];
-$user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
-//$user = $_SESSION['user'];
+$id_hang = $_GET['id_hang'];
 
-$sql = "SELECT * FROM product";
+// Chuẩn bị và thực thi truy vấn cơ sở dữ liệu
+$sql = "SELECT * FROM product WHERE id_hang = '$id_hang' Order By id DESC";
+$result = $conn->query($sql);
+
+// Kiểm tra xem có sản phẩm nào được tìm thấy không
+if ($result->num_rows > 0) {
+    // Có sản phẩm được tìm thấy, hiển thị chúng bằng HTML
+    while ($row = $result->fetch_assoc()) {
+        // $productId = $row['id'];
+        // $productName = $row['name'];
+        // $productPrice = $row['price'];
+
+        // // Hiển thị thông tin sản phẩm bằng HTML
+        // echo "<div>";
+        // echo "<h3>$productName</h3>";
+        // echo "<p>Giá: $productPrice</p>";
+        // // Thêm thêm chi tiết sản phẩm nếu cần
+        // echo "</div>";
+    }
+} else {
+    // Không có sản phẩm nào được tìm thấy cho danh mục đã chọn
+    echo "<p>Không tìm thấy sản phẩm nào trong danh mục này.</p>";
+}
+
+$sql = "SELECT * FROM product WHERE id_hang = '$id_hang' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
-
 
 //Tính số bản ghi của bảng product
 $total_table = mysqli_num_rows($result);
@@ -25,19 +46,17 @@ $page = ceil($total_table / $limit);
 $start = ($cr_page - 1) * $limit;
 
 //Query sử dụng limit
-$result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $start,$limit");
+$result = mysqli_query($conn, "SELECT * FROM product WHERE id_hang = '$id_hang' ORDER BY id DESC LIMIT $start,$limit");
 
-
+$conn->close();
 ?>
-
 <!DOCTYPE html>
-<html lang="vn">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madara Technology</title>
+    <title>Phân loại - Madara Technology</title>
     <link rel="icon" href="./img/logo.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./Css/styles.css">
@@ -45,17 +64,8 @@ $result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $sta
 </head>
 
 <body>
-    <!--Area of header-->
-    <?php include './header.php'; ?>
-    <!--Area of search-->
-    <div class="search">
-        <div class="search_frame">
-            <form action="search.php" id="search_box" method="GET" role="form">
-                <input id="search_text" name="product_name" type="text" placeholder="Nhập tên sản phẩm cần tìm...">
-                <button id="search_submit" type="submit"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-    </div>
+    <?php include 'header.php'; ?>
+
     <!--Area of category-->
     <div class="category">
         <div class="category_frame">
@@ -77,6 +87,7 @@ $result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $sta
             </div>
         </div>
     </div>
+
     <!--Area of content-->
     <div class="content">
         <div class="content_type"></div>
@@ -116,44 +127,26 @@ $result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $sta
         <div class="page_number">
             <div class="number">
                 <ul>
-                    <?php if ($cr_page - 1 > 0) { ?>
-                        <li class="number1"><a href="home.php?page=<?php echo $cr_page - 1 ?>"><i class="fas fa-chevron-left"></i></a></li>
-                    <?php } ?>
-                    <!--<li class="number1"><a href="#">2</a></li>
-                    <li class="number1"><a href="#">3</a></li>
-                    <li class="number1"><a href="#">4</a></li>-->
-                    <?php for ($i = 1; $i <= $page; $i++) { ?>
-                        <li class="number1 <?php echo (($cr_page == $i) ? 'active' : '') ?>"><a href="home.php?page=<?php echo $i ?>"><?php echo $i ?></a></li>
-                    <?php } ?>
-                    <?php if ($cr_page + 1 <= $page) { ?>
-                        <li class="number1"><a href="home.php?page=<?php echo $cr_page + 1 ?>"><i class="fas fa-chevron-right"></i></a></li>
-                    <?php } ?>
+                    <?php if ($page >= 1) : ?>
+                        <?php if ($cr_page - 1 > 0) { ?>
+                            <li class="number1"><a href="category.php?id_hang=<?php echo $id_hang ?>&page=<?php echo $cr_page - 1 ?>"><i class="fas fa-chevron-left"></i></a></li>
+                        <?php } ?>
+
+                        <?php for ($i = 1; $i <= $page; $i++) { ?>
+                            <li class="number1 <?php echo (($cr_page == $i) ? 'active' : '') ?>"><a href="category.php?id_hang=<?php echo $id_hang ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                        <?php } ?>
+
+                        <?php if ($cr_page + 1 <= $page) { ?>
+                            <li class="number1"><a href="category.php?id_hang=<?php echo $id_hang ?>&page=<?php echo $cr_page + 1 ?>"><i class="fas fa-chevron-right"></i></a></li>
+                        <?php } ?>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
     </div>
-    <!--Area of contact-->
-    <div class="contact">
-        <div class="contact_frame">
-            <div class="contact_card">
-                <i class="fas fa-headset"></i>
-                <h3>Hỗ trợ bảo hành</h3>
-                <p>Bảo hành lên đến 3 năm tại cửa hàng.</p>
-            </div>
-            <div class="contact_card">
-                <i class="fas fa-user-circle"></i>
-                <h3>Người dùng</h3>
-                <p>Mức chiết khấu lớn, giao hàng miễn phí và nhân viên hỗ trợ tận nhà.</p>
-            </div>
-            <div class="contact_card">
-                <i class="fas fa-tag"></i>
-                <h3>Khuyến mãi</h3>
-                <p>Giảm giá sản phẩm mới cho bạn tiết kiệm chi phí.</p>
-            </div>
-        </div>
-    </div>
-    <!--Area of helps-->
-    <?php include './footer.php'; ?>
+
+    <?php include 'footer.php'; ?>
+
 </body>
 
 </html>

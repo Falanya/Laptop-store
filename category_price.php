@@ -1,43 +1,41 @@
 <?php
 include './setting/connect.php';
 
-//$user = [];
 $user = (isset($_SESSION['user']) ? $_SESSION['user'] : []);
-//$user = $_SESSION['user'];
 
 $sql = "SELECT * FROM product";
+
+// Kiểm tra tham số "sort" trong URL
+$sort = (isset($_GET['sort']) && ($_GET['sort'] === 'high_price' || $_GET['sort'] === 'low_price')) ? $_GET['sort'] : 'id';
+
+// Sửa câu truy vấn SQL để phân loại theo giá cao hoặc giá thấp
+$sql .= " ORDER BY sale_price " . ($sort === 'low_price' ? 'ASC' : 'DESC');
+
 $result = mysqli_query($conn, $sql);
 
-
-//Tính số bản ghi của bảng product
 $total_table = mysqli_num_rows($result);
 
-//Thiết lập số bảng ghi trên một trang
 $limit = 40;
 
-//Lấy trang hiện tại
 $cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
 
-//Tính số trang
 $page = ceil($total_table / $limit);
 
-//Tính start
 $start = ($cr_page - 1) * $limit;
 
-//Query sử dụng limit
-$result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $start,$limit");
+$sql .= " LIMIT $start, $limit";
 
+$result = mysqli_query($conn, $sql);
 
 ?>
 
 <!DOCTYPE html>
-<html lang="vn">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madara Technology</title>
+    <title>Phân loại - Madara Technology</title>
     <link rel="icon" href="./img/logo.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./Css/styles.css">
@@ -47,15 +45,6 @@ $result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $sta
 <body>
     <!--Area of header-->
     <?php include './header.php'; ?>
-    <!--Area of search-->
-    <div class="search">
-        <div class="search_frame">
-            <form action="search.php" id="search_box" method="GET" role="form">
-                <input id="search_text" name="product_name" type="text" placeholder="Nhập tên sản phẩm cần tìm...">
-                <button id="search_submit" type="submit"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-    </div>
     <!--Area of category-->
     <div class="category">
         <div class="category_frame">
@@ -116,18 +105,19 @@ $result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $sta
         <div class="page_number">
             <div class="number">
                 <ul>
-                    <?php if ($cr_page - 1 > 0) { ?>
-                        <li class="number1"><a href="home.php?page=<?php echo $cr_page - 1 ?>"><i class="fas fa-chevron-left"></i></a></li>
-                    <?php } ?>
-                    <!--<li class="number1"><a href="#">2</a></li>
-                    <li class="number1"><a href="#">3</a></li>
-                    <li class="number1"><a href="#">4</a></li>-->
-                    <?php for ($i = 1; $i <= $page; $i++) { ?>
-                        <li class="number1 <?php echo (($cr_page == $i) ? 'active' : '') ?>"><a href="home.php?page=<?php echo $i ?>"><?php echo $i ?></a></li>
-                    <?php } ?>
-                    <?php if ($cr_page + 1 <= $page) { ?>
-                        <li class="number1"><a href="home.php?page=<?php echo $cr_page + 1 ?>"><i class="fas fa-chevron-right"></i></a></li>
-                    <?php } ?>
+                <?php if ($page >= 1) : ?>
+                        <?php if ($cr_page - 1 > 0) { ?>
+                            <li class="number1"><a href="category_price.php?sort=<?php echo $sort ?>&page=<?php echo $cr_page - 1 ?>"><i class="fas fa-chevron-left"></i></a></li>
+                        <?php } ?>
+
+                        <?php for ($i = 1; $i <= $page; $i++) { ?>
+                            <li class="number1 <?php echo (($cr_page == $i) ? 'active' : '') ?>"><a href="category_price.php?sort=<?php echo $sort ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>
+                        <?php } ?>
+
+                        <?php if ($cr_page + 1 <= $page) { ?>
+                            <li class="number1"><a href="category_price.php?sort=<?php echo $sort ?>&page=<?php echo $cr_page + 1 ?>"><i class="fas fa-chevron-right"></i></a></li>
+                        <?php } ?>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

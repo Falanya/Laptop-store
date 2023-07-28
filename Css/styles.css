@@ -240,6 +240,46 @@ html body::-webkit-scrollbar-thumb {
 
 /*Ker thuc search*/
 
+/*Xu ly category*/
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    margin-top: 50px;
+}
+
+.category .category_frame {
+    background-color: white;
+    padding: 10px;
+}
+
+.category .category_frame .title_category {
+    padding: 10px;
+    border-bottom: 2px solid black;
+}
+
+.category .category_frame .content_category ul {
+    display: flex;
+}
+
+.category .category_frame .content_category ul li {
+    list-style: none;
+    padding: 10px;
+}
+
+.category .category_frame .content_category ul li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+}
+
+.category .category_frame .content_category ul li a:hover {
+    color: tomato;
+}
+
+/*Ket thuc category*/
+
 /*Xu ly content*/
 .content_type,
 .content_laptop,
