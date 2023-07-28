@@ -64,15 +64,15 @@ if (isset($_POST['name'])) {
                     <div>
                         <div class="form-group">
                             <label class="title_info" for="">Tên sản phẩm:</label>
-                            <input type="text" class="form-control" id="" name="name" placeholder="Nhập tên sản phẩm">
+                            <input type="text" class="form-control" id="" name="name" placeholder="Nhập tên sản phẩm" required="required">
                         </div>
                         <div class="form-group img_product">
                             <label class="title_info" for="">Ảnh sản phẩm:</label>
-                            <input type="file" class="form-control" id="" name="image" placeholder="Ảnh sản phẩm">
+                            <input type="file" class="form-control" id="" name="image" placeholder="Ảnh sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Số lượng:</label>
-                            <input type="text" class="form-control" id="" name="quantity" placeholder="Nhập số lượng sản phẩm">
+                            <input type="text" class="form-control" id="" name="quantity" placeholder="Nhập số lượng sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Tên hãng:</label>
@@ -103,27 +103,27 @@ if (isset($_POST['name'])) {
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Trọng lượng:</label>
-                            <input type="text" class="form-control" id="" name="trong_luong" placeholder="Trọng lượng của sản phẩm">
+                            <input type="text" class="form-control" id="" name="trong_luong" placeholder="Trọng lượng của sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Màu sắc:</label>
-                            <input type="text" class="form-control" id="" name="mau_sac" placeholder="Màu sắc của sản phẩm">
+                            <input type="text" class="form-control" id="" name="mau_sac" placeholder="Màu sắc của sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Kích thước:</label>
-                            <input type="text" class="form-control" id="" name="kich_thuoc" placeholder="Kích thước của sản phẩm">
+                            <input type="text" class="form-control" id="" name="kich_thuoc" placeholder="Kích thước của sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Giá sản phẩm:</label>
-                            <input type="text" class="form-control" id="" name="price" placeholder="Nhập giá sản phẩm">
+                            <input type="text" class="form-control" id="" name="price" placeholder="Nhập giá sản phẩm (lưu ý: 1 triệu thì nhập 1.000)" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Giá khuyến mãi:</label>
-                            <input type="text" class="form-control" id="" name="sale_price" placeholder="Nhập giá khuyến mãi">
+                            <input type="text" class="form-control" id="" name="sale_price" placeholder="Nhập giá khuyến mãi (lưu ý: 1 triệu thì nhập 1.000)" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Loại sản phẩm:</label>
-                            <input type="text" class="form-control" id="" name="category" placeholder="Nhập loại vd: gaming, hoc-tap,...">
+                            <input type="text" class="form-control" id="" name="category" placeholder="Nhập loại vd: gaming, hoc-tap-van-phong, macbook" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Trạng thái:</label>

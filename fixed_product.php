@@ -85,7 +85,7 @@ if (isset($_POST['name'])) {
                     <div>
                         <div class="form-group">
                             <label class="title_info" for="">Tên sản phẩm:</label>
-                            <input value="<?php echo $product['name']; ?>" type="text" class="form-control" id="" name="name" placeholder="Nhập tên sản phẩm">
+                            <input value="<?php echo $product['name']; ?>" type="text" class="form-control" id="" name="name" placeholder="Nhập tên sản phẩm" required="required">
                         </div>
                         <div class="form-group img_product">
                             <label class="title_info" for="">Ảnh sản phẩm:</label>
@@ -93,7 +93,7 @@ if (isset($_POST['name'])) {
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Số lượng:</label>
-                            <input value="<?php echo $product['quantity']; ?>" type="text" class="form-control" id="" name="quantity" placeholder="Nhập số lượng sản phẩm">
+                            <input value="<?php echo $product['quantity']; ?>" type="text" class="form-control" id="" name="quantity" placeholder="Nhập số lượng sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Tên hãng:</label>
@@ -127,27 +127,27 @@ if (isset($_POST['name'])) {
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Trọng lượng:</label>
-                            <input value="<?php echo $product['trong_luong']; ?>" type="text" class="form-control" id="" name="trong_luong" placeholder="Trọng lượng của sản phẩm">
+                            <input value="<?php echo $product['trong_luong']; ?>" type="text" class="form-control" id="" name="trong_luong" placeholder="Trọng lượng của sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Màu sắc:</label>
-                            <input value="<?php echo $product['mau_sac']; ?>" type="text" class="form-control" id="" name="mau_sac" placeholder="Màu sắc của sản phẩm">
+                            <input value="<?php echo $product['mau_sac']; ?>" type="text" class="form-control" id="" name="mau_sac" placeholder="Màu sắc của sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Kích thước:</label>
-                            <input value="<?php echo $product['kich_thuoc']; ?>" type="text" class="form-control" id="" name="kich_thuoc" placeholder="Kích thước của sản phẩm">
+                            <input value="<?php echo $product['kich_thuoc']; ?>" type="text" class="form-control" id="" name="kich_thuoc" placeholder="Kích thước của sản phẩm" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Giá sản phẩm:</label>
-                            <input value="<?php echo $product['price']; ?>" type="text" class="form-control" id="" name="price" placeholder="Nhập giá sản phẩm">
+                            <input value="<?php echo $product['price']; ?>" type="text" class="form-control" id="" name="price" placeholder="Nhập giá sản phẩm (lưu ý: 1 triệu thì nhập 1.000)" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Giá khuyến mãi:</label>
-                            <input value="<?php echo $product['sale_price']; ?>" type="text" class="form-control" id="" name="sale_price" placeholder="Nhập giá khuyến mãi">
+                            <input value="<?php echo $product['sale_price']; ?>" type="text" class="form-control" id="" name="sale_price" placeholder="Nhập giá khuyến mãi (lưu ý: 1 triệu thì nhập 1.000)" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Loại sản phẩm:</label>
-                            <input value="<?php echo $product['category']; ?>" type="text" class="form-control" id="" name="category" placeholder="Nhập loại vd: gaming, hoc-tap,...">
+                            <input value="<?php echo $product['category']; ?>" type="text" class="form-control" id="" name="category" placeholder="Nhập loại vd: gaming, hoc-tap-van-phong, macbook" required="required">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Trạng thái:</label>

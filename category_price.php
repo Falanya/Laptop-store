@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $sql);
 
 $total_table = mysqli_num_rows($result);
 
-$limit = 40;
+$limit = 25;
 
 $cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
 

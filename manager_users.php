@@ -13,7 +13,7 @@ $result = mysqli_query($conn, $sql);
 $total_table = mysqli_num_rows($result);
 
 //Thiết lập số bảng ghi trên một trang
-$limit = 30;
+$limit = 20;
 
 //Lấy trang hiện tại
 $cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
@@ -90,9 +90,9 @@ $result = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC LIMIT $start
                             <?php } else { ?>
                                 <td>Offline</td>
                             <?php } ?>
-                            <td class="button_fdd">
+                            <!--<td class="button_fdd">
                                 <button class="button_delete"><a href="remove_users.php?id=<?php echo $pro['id'] ?>">Xóa</a></button>
-                            </td>
+                            </td>-->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
