@@ -35,6 +35,7 @@ if (isset($_POST['name'])) {
     $updated_mau_sac = $_POST['mau_sac'];
     $updated_kich_thuoc = $_POST['kich_thuoc'];
     $updated_status = $_POST['status'];
+    $update_category = $_POST['category'];
 
     if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
         // Người dùng đã chọn hình ảnh mới, tiến hành upload và cập nhật đường dẫn mới
@@ -50,7 +51,7 @@ if (isset($_POST['name'])) {
 
             if (move_uploaded_file($file_tmp_name, $uploaded_file)) {
                 // Cập nhật đường dẫn mới vào cơ sở dữ liệu
-                $update_sql = "UPDATE product SET name = '$updated_name', image = '$uploaded_file', quantity = '$updated_quantity', 
+                $update_sql = "UPDATE product SET name = '$updated_name', image = '$uploaded_file', quantity = '$updated_quantity', category = '$update_category', 
                 price = '$updated_price', sale_price = '$updated_sale_price', id_hang = '$updated_id_hang', cpu = '$updated_cpu', 
                 ram = '$updated_ram', o_cung = '$updated_o_cung', card_do_hoa = '$updated_card_do_hoa', trong_luong = '$updated_trong_luong', 
                 mau_sac = '$updated_mau_sac', kich_thuoc = '$updated_kich_thuoc', status = '$updated_status' WHERE id = '$id_product'";
@@ -71,7 +72,7 @@ if (isset($_POST['name'])) {
         }
     } else {
         // Không có hình ảnh mới được chọn, chỉ cập nhật các thông tin khác
-        $update_sql = "UPDATE product SET name = '$updated_name', quantity = '$updated_quantity', 
+        $update_sql = "UPDATE product SET name = '$updated_name', quantity = '$updated_quantity', category = '$update_category', 
         price = '$updated_price', sale_price = '$updated_sale_price', id_hang = '$updated_id_hang', cpu = '$updated_cpu', 
         ram = '$updated_ram', o_cung = '$updated_o_cung', card_do_hoa = '$updated_card_do_hoa', trong_luong = '$updated_trong_luong', 
         mau_sac = '$updated_mau_sac', kich_thuoc = '$updated_kich_thuoc', status = '$updated_status' WHERE id = '$id_product'";
@@ -174,6 +175,10 @@ if (isset($_POST['name'])) {
                         <div class="form-group">
                             <label class="title_info" for="">Giá khuyến mãi:</label>
                             <input value="<?php echo $product['sale_price']; ?>" type="text" class="form-control" id="" name="sale_price" placeholder="Nhập giá khuyến mãi">
+                        </div>
+                        <div class="form-group">
+                            <label class="title_info" for="">Loại sản phẩm:</label>
+                            <input value="<?php echo $product['category']; ?>" type="text" class="form-control" id="" name="category" placeholder="Nhập loại vd: gaming, hoc-tap,...">
                         </div>
                         <div class="form-group">
                             <label class="title_info" for="">Trạng thái:</label>
