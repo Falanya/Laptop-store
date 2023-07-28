@@ -41,53 +41,22 @@ if (isset($_POST['name'])) {
         // Người dùng đã chọn hình ảnh mới, tiến hành upload và cập nhật đường dẫn mới
         $file = $_FILES['image'];
         $file_name = $file['name'];
-        $file_tmp_name = $file['tmp_name'];
-        $file_error = $file['error'];
+        move_uploaded_file($file['tmp_name'], 'img/' . $file_name);
 
-        if ($file_error === 0) {
-            // Hình ảnh hợp lệ, tiến hành upload và cập nhật đường dẫn mới
-            $upload_dir = 'img/';
-            $uploaded_file = $upload_dir . $file_name;
-
-            if (move_uploaded_file($file_tmp_name, $uploaded_file)) {
-                // Cập nhật đường dẫn mới vào cơ sở dữ liệu
-                $update_sql = "UPDATE product SET name = '$updated_name', image = '$uploaded_file', quantity = '$updated_quantity', category = '$update_category', 
+        $update_sql = "UPDATE product SET name = '$updated_name', image = '$file_name', quantity = '$updated_quantity', category = '$update_category', 
                 price = '$updated_price', sale_price = '$updated_sale_price', id_hang = '$updated_id_hang', cpu = '$updated_cpu', 
                 ram = '$updated_ram', o_cung = '$updated_o_cung', card_do_hoa = '$updated_card_do_hoa', trong_luong = '$updated_trong_luong', 
                 mau_sac = '$updated_mau_sac', kich_thuoc = '$updated_kich_thuoc', status = '$updated_status' WHERE id = '$id_product'";
-                $fixed_sql = mysqli_query($conn, $update_sql);
-
-                if ($fixed_sql) {
-                    $update_success = "Đã cập nhật sản phẩm";
-                    header('Location: admin.php?type=manager_product');
-                    exit();
-                } else {
-                    $update_error = "Lỗi khi cập nhật sản phẩm";
-                }
-            } else {
-                $update_error = "Lỗi khi upload hình ảnh";
-            }
-        } else {
-            $update_error = "Có lỗi xảy ra khi tải lên hình ảnh";
-        }
+        mysqli_query($conn, $update_sql);
     } else {
         // Không có hình ảnh mới được chọn, chỉ cập nhật các thông tin khác
         $update_sql = "UPDATE product SET name = '$updated_name', quantity = '$updated_quantity', category = '$update_category', 
         price = '$updated_price', sale_price = '$updated_sale_price', id_hang = '$updated_id_hang', cpu = '$updated_cpu', 
         ram = '$updated_ram', o_cung = '$updated_o_cung', card_do_hoa = '$updated_card_do_hoa', trong_luong = '$updated_trong_luong', 
         mau_sac = '$updated_mau_sac', kich_thuoc = '$updated_kich_thuoc', status = '$updated_status' WHERE id = '$id_product'";
-        $fixed_sql = mysqli_query($conn, $update_sql);
-
-        if ($fixed_sql) {
-            $update_success = "Đã cập nhật sản phẩm";
-            //header('Location: admin.php?type=manager_product');
-            exit();
-        } else {
-            $update_error = "Lỗi khi cập nhật sản phẩm";
-        }
+        mysqli_query($conn, $update_sql);
     }
 }
-
 ?>
 
 <!DOCTYPE html>
