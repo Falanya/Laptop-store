@@ -74,7 +74,7 @@ if (isset($_POST['name'])) {
 <body>
     <div class="header_add_product">
         <div class="title_add_product">
-            <h3>Thêm sản phẩm</h3>
+            <h3>Sửa sản phẩm</h3>
         </div>
         <div class="operation_add_product">
             <button><a href="admin.php?type=manager_product">Danh sách sản phẩm</a></button>

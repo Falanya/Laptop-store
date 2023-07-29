@@ -88,7 +88,11 @@ $result = mysqli_query($conn, $sql);
                             </div>
                             <div class="click_order">
                                 <p><a href="product_detail.php?id=<?php echo $info_product['id'] ?>">Click để xem chi tiết</a></p>
-                                <button><a style="text-decoration: none; color:white;" href="./cart.php?id=<?php echo $info_product['id'] ?>">Đặt hàng</a></button>
+                                <?php if ($info_product['status'] == 1) { ?>
+                                    <button><a style="text-decoration: none; color:white;" href="./cart.php?id=<?php echo $info_product['id'] ?>">Đặt hàng</a></button>
+                                <?php } else { ?>
+                                    <button><a style="text-decoration: none; color:white;">Hết hàng</a></button>
+                                <?php } ?>
                             </div>
                             <div class="describe_laptop">
                                 <p><?php echo $info_product['name'] ?></p>
@@ -105,7 +109,7 @@ $result = mysqli_query($conn, $sql);
         <div class="page_number">
             <div class="number">
                 <ul>
-                <?php if ($page >= 1) : ?>
+                    <?php if ($page >= 1) : ?>
                         <?php if ($cr_page - 1 > 0) { ?>
                             <li class="number1"><a href="category_price.php?sort=<?php echo $sort ?>&page=<?php echo $cr_page - 1 ?>"><i class="fas fa-chevron-left"></i></a></li>
                         <?php } ?>

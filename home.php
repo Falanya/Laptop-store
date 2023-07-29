@@ -99,7 +99,11 @@ $result = mysqli_query($conn, "SELECT * FROM product Order by id DESC LIMIT $sta
                             </div>
                             <div class="click_order">
                                 <p><a href="product_detail.php?id=<?php echo $info_product['id'] ?>">Click để xem chi tiết</a></p>
-                                <button><a style="text-decoration: none; color:white;" href="./cart.php?id=<?php echo $info_product['id'] ?>">Đặt hàng</a></button>
+                                <?php if ($info_product['status'] == 1) { ?>
+                                    <button><a style="text-decoration: none; color:white;" href="./cart.php?id=<?php echo $info_product['id'] ?>">Đặt hàng</a></button>
+                                <?php } else { ?>
+                                    <button><a style="text-decoration: none; color:white;">Hết hàng</a></button>
+                                <?php } ?>
                             </div>
                             <div class="describe_laptop">
                                 <p><?php echo $info_product['name'] ?></p>
