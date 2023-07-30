@@ -11,12 +11,6 @@ $quantity = (isset($_GET['quantity'])) ? $_GET['quantity'] : 1;
 if($quantity <= 0){
     $quantity = 1;
 }
-//session_destroy();
-//echo $action;
-//die();
-//die();
-// var_dump($action);
-// die();
 
 $query = mysqli_query($conn, "SELECT * FROM product WHERE id= $id");
 
