@@ -1,10 +1,4 @@
 <?php
-//include './setting/connect.php';
-
-// $sql = "SELECT product.*, hang.name AS 'name_hang' FROM product JOIN hang ON product.id_hang = hang.id";
-// $result = mysqli_query($conn, $sql);
-
-
 $sql = "SELECT * FROM users";
 $result = mysqli_query($conn, $sql);
 
