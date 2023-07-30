@@ -1,33 +1,50 @@
 <?php
-//include './setting/connect.php';
+// Kiểm tra xem có gửi form tìm kiếm hay không
+if (isset($_POST['searchss'])) {
+    $search_query = $_POST['searchss'];
 
-$sql = "SELECT * FROM orders";
+    // Sửa câu truy vấn SQL để bao gồm điều kiện tìm kiếm
+    $sql = "SELECT o.*, u.name AS user_name, GROUP_CONCAT(CONCAT(' ', p.name, ' (x', od.quantity, ')')) AS product_names
+            FROM orders AS o
+            JOIN users AS u ON o.id_users = u.id
+            JOIN orders_detail AS od ON o.id = od.id_order
+            JOIN product AS p ON od.id_product = p.id
+            WHERE o.id = '$search_query'
+            GROUP BY o.id
+            ORDER BY o.id DESC";
+} else {
+    // Nếu không có form tìm kiếm được gửi, sử dụng câu truy vấn gốc để hiển thị tất cả đơn hàng
+    $sql = "SELECT o.*, u.name AS user_name, GROUP_CONCAT(CONCAT(' ', p.name, ' (x', od.quantity, ')')) AS product_names
+            FROM orders AS o
+            JOIN users AS u ON o.id_users = u.id
+            JOIN orders_detail AS od ON o.id = od.id_order
+            JOIN product AS p ON od.id_product = p.id
+            GROUP BY o.id
+            ORDER BY o.id DESC";
+}
+
+// Thực hiện truy vấn SQL để lấy tổng số bản ghi của bảng đơn hàng
 $result = mysqli_query($conn, $sql);
-
-//Tính số bản ghi của bảng product
 $total_table = mysqli_num_rows($result);
 
-//Thiết lập số bảng ghi trên một trang
+// Thiết lập số bản ghi trên một trang
 $limit = 10;
 
-//Lấy trang hiện tại
+// Lấy trang hiện tại
 $cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
 
-//Tính số trang
+// Tính số trang
 $page = ceil($total_table / $limit);
 
-//Tính start
+// Giới hạn trang hiện tại nằm trong phạm vi hợp lệ
+$cr_page = max(1, min($page, $cr_page));
+
+// Tính start
 $start = ($cr_page - 1) * $limit;
 
-//Query sử dụng limit
-$result = mysqli_query($conn, "SELECT o.*, u.name AS user_name, GROUP_CONCAT(CONCAT(' ',p.name, ' (x', od.quantity, ')')) AS product_names
-FROM orders AS o
-JOIN users AS u ON o.id_users = u.id
-JOIN orders_detail AS od ON o.id = od.id_order
-JOIN product AS p ON od.id_product = p.id
-GROUP BY o.id
-Order By o.id DESC
-LIMIT $start, $limit");
+// Sử dụng limit trong câu truy vấn
+$sql .= " LIMIT $start, $limit";
+$result = mysqli_query($conn, $sql);
 
 ?>
 

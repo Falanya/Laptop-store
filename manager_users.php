@@ -1,25 +1,37 @@
 <?php
-$sql = "SELECT * FROM users";
+// Kiểm tra xem có gửi form tìm kiếm hay không
+if (isset($_POST['searchss'])) {
+    $search_query = $_POST['searchss'];
+
+    // Sửa câu truy vấn SQL để bao gồm điều kiện tìm kiếm
+    $sql = "SELECT * FROM users WHERE user_name LIKE '%$search_query%'";
+} else {
+    // Nếu không có form tìm kiếm được gửi, sử dụng câu truy vấn gốc để hiển thị tất cả người dùng
+    $sql = "SELECT * FROM users";
+}
+
+// Thực hiện truy vấn SQL để lấy tổng số bản ghi
 $result = mysqli_query($conn, $sql);
-
-
-//Tính số bản ghi của bảng product
 $total_table = mysqli_num_rows($result);
 
-//Thiết lập số bảng ghi trên một trang
+// Thiết lập số bản ghi trên một trang
 $limit = 20;
 
-//Lấy trang hiện tại
+// Lấy trang hiện tại
 $cr_page = (isset($_GET['page']) ? $_GET['page'] : 1);
 
-//Tính số trang
+// Tính số trang
 $page = ceil($total_table / $limit);
 
-//Tính start
+// Giới hạn trang hiện tại nằm trong phạm vi hợp lệ
+$cr_page = max(1, min($page, $cr_page));
+
+// Tính start
 $start = ($cr_page - 1) * $limit;
 
-//Query sử dụng limit
-$result = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC LIMIT $start, $limit");
+// Sử dụng limit và điều kiện tìm kiếm trong câu truy vấn
+$sql .= " ORDER BY id DESC LIMIT $start, $limit";
+$result = mysqli_query($conn, $sql);
 
 
 ?>

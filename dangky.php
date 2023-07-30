@@ -8,6 +8,18 @@ if (isset($_SESSION['user'])) {
     exit();
 }
 
+// Kiểm tra cú pháp email
+function is_valid_email($email)
+{
+    return preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email);
+}
+
+// Kiểm tra cú pháp số điện thoại
+function is_valid_phone($phone)
+{
+    return preg_match("/^[0-9]{10,11}$/", $phone);
+}
+
 $err = [];
 if (isset($_POST['user_name'])) {
     $user_name = $_POST['user_name'];
@@ -21,12 +33,19 @@ if (isset($_POST['user_name'])) {
     if ($password != $rPassword) {
         $err['rPassword'] = 'Phải nhập lại mật khẩu cho đúng nha';
     }
-    //var_dump(empty($err));
+
+    // Kiểm tra cú pháp email
+    if (!is_valid_email($email)) {
+        $err['email'] = 'Email không hợp lệ, vui lòng nhập lại đúng định dạng';
+    }
+
+    // Kiểm tra cú pháp số điện thoại
+    if (!is_valid_phone($sdt)) {
+        $err['sdt'] = 'Số điện thoại không hợp lệ, vui lòng nhập lại';
+    }
+
     if (empty($err)) {
-        //password_hash(string, PASSWORD_DEFAULT);
         $pass = password_hash($password, PASSWORD_DEFAULT);
-        //var_dump($pass);
-        //die();
         $avatarDefault = "be7.jpg";
         $sql = "INSERT INTO users(user_name,name,email,password,address,sdt,avatar) VALUES ('$user_name','$name','$email','$pass','$address','$sdt','$avatarDefault')";
         $query = mysqli_query($conn, $sql);
@@ -80,10 +99,16 @@ if (isset($_POST['user_name'])) {
                     <div class="form-group">
                         <label>Email</label>
                         <input type="text" id="" name="email" placeholder="Email cho đầy đủ nè :3" required="required">
+                        <div class="has-error">
+                            <span><?php echo (isset($err['email'])) ? $err['email'] : ''; ?></span>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Số điện thoại</label>
                         <input type="text" id="" name="sdt" placeholder="Thêm số điện thoại nữa nha :3" required="required">
+                        <div class="has-error">
+                            <span><?php echo (isset($err['sdt'])) ? $err['sdt'] : ''; ?></span>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ</label>

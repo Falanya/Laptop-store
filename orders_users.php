@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 $sql = "SELECT * FROM orders";
 $result = mysqli_query($conn, $sql);
 
-//Tính số bản ghi của bảng product
+//Tính số bản ghi của bảng
 $total_table = mysqli_num_rows($result);
 
 //Thiết lập số bảng ghi trên một trang
