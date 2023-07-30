@@ -68,6 +68,7 @@ $result = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC LIMIT $start
                         <th>Địa chỉ</th>
                         <th>Vai trò</th>
                         <th>Trạng thái</th>
+                        <th>Last activity</th>
                         <!--<th></th>-->
                     </tr>
                 </thead>
@@ -90,6 +91,7 @@ $result = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC LIMIT $start
                             <?php } else { ?>
                                 <td>Offline</td>
                             <?php } ?>
+                            <td style="text-align: center;"><?php echo $pro['last_activity'] ?></td>
                             <!--<td class="button_fdd">
                                 <button class="button_delete"><a href="remove_users.php?id=<?php echo $pro['id'] ?>">Xóa</a></button>
                             </td>-->
