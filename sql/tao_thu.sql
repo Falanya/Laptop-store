@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2023 at 10:44 PM
+-- Generation Time: Jul 30, 2023 at 09:37 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -69,7 +69,10 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `id_users`, `total_price`, `note`, `status`, `address`, `sdt`, `time_order`) VALUES
 (25, 8, 14.990, 'égsrgdrh', 1, '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', '2023-07-28 12:45:00'),
-(26, 19, 58.480, '', 0, 'Hồ Chí Minh', '0102030405', '2023-07-29 02:52:34');
+(26, 19, 58.480, '', 0, 'Hồ Chí Minh', '0102030405', '2023-07-29 02:52:34'),
+(27, 19, 64.980, 'Hàng dễ vỡ', 1, 'Hồ Chí Minh', '0102030405', '2023-07-30 08:33:31'),
+(28, 19, 47.480, 'hàng dễ vỡ', 0, 'Hà Nội', '030405060', '2023-07-30 11:15:49'),
+(29, 20, 83.670, 'Hàng dễ vỡ', 1, 'Tân Bình, Hồ Chí Minh', '03040506', '2023-07-30 12:58:49');
 
 -- --------------------------------------------------------
 
@@ -91,7 +94,12 @@ CREATE TABLE `orders_detail` (
 INSERT INTO `orders_detail` (`id_order`, `id_product`, `quantity`, `price`) VALUES
 (25, 20, '1', 14.990),
 (26, 82, '1', 25.990),
-(26, 84, '1', 32.490);
+(26, 84, '1', 32.490),
+(27, 84, '2', 32.490),
+(28, 63, '1', 14.990),
+(28, 84, '1', 32.490),
+(29, 83, '1', 18.690),
+(29, 84, '2', 32.490);
 
 -- --------------------------------------------------------
 
@@ -153,7 +161,7 @@ INSERT INTO `product` (`id`, `name`, `image`, `quantity`, `price`, `sale_price`,
 (79, 'Laptop gaming MSI Katana GF66 12UCK 804VN', 'laptop28.jpg', '100', 26.990, 21.790, 6, 'gaming', 'Intel Core i7-12650H 3.5 GHz up to 4.7 GHz, 10 Cores 16 Threads, 24MB Cache\r\n', '8GB DDR4 3200MHz (2x SO-DIMM socket, up to 64GB SDRAM)\r\n', '512GB NVMe PCIe Gen 4 SSD (1 slot)\r\n', 'NVIDIA® GeForce RTX™ 3050 4GB GDDR6 Up to 1550MHz Boost Clock, 60W Maximum Graphics Power.\r\n', '2.25 kg', 'Đen', '359 x 259 x 24.9 mm', 1),
 (80, 'Laptop gaming Acer Nitro 5 AN515 58 52SP', 'laptop29.jpg', '100', 27.990, 22.990, 2, 'gaming', 'Intel Core i5-12500H 3.3GHz up to 4.5GHz 18MB\r\n', '8GB DDR4 3200MHz (2x SO-DIMM socket, up to 32GB SDRAM)\r\n', '512GB SSD M.2 PCIE (nâng cấp tối đa 1TB SSD PCIe Gen3, 8 Gb/s, NVMe và 2TB HDD 2.5-inch 5400 RPM) (Còn trống 1 khe SSD M.2 PCIE và 1 khe 2.5\" SATA)\r\n', 'NVIDIA® GeForce RTX™ 3050 4GB GDDR6\r\n', '2.5 kg', 'Obsidian Black', '360.4 x 271.09 x 25.9 mm', 1),
 (81, 'Laptop gaming Acer Nitro 5 Tiger AN515 58 769J', 'laptop30.jpg', '100', 30.990, 25.490, 2, 'gaming', 'Intel Core i7-12700H up to 4.7GHz, 24MB Cache\r\n', '8GB DDR4 3200MHz (2x SO-DIMM socket, up to 32GB SDRAM)\r\n', '512GB PCIe NVMe SED SSD (Còn trống 1 khe SSD M.2 PCIE và 1 khe 2.5\" SATA)\r\n', 'NVIDIA® GeForce RTX™ 3050 4GB GDDR6\r\n', '2.5 kg', 'Obsidian Black', '360.4 x 271.09 x 25.9 mm', 1),
-(82, 'Laptop gaming Dell G15 5525 R7H165W11GR3060', 'laptop31.jpg', '100', 27.490, 25.990, 4, 'gaming', 'AMD Ryzen 7 6800H (8C / 16T, 3.2 / 4.7GHz, 4MB L2 / 16MB L3)\r\n', '16GB (2x8GB) DDR5 4800MHz (2x SO-DIMM socket, up to 32GB SDRAM)\r\n', '512GB SSD M.2 PCIe PCIE G4X4\r\n', 'NVIDIA® GeForce RTX™ 3060 6GB GDDR6\r\n', '2.72 kg', 'Dark Shadow Grey', '357.26 x 272.11 x 26.90 (mm)', 1),
+(82, 'Laptop gaming Dell G15 5525 R7H165W11GR3060', 'laptop31.jpg', '100', 27.490, 25.990, 4, 'gaming', 'AMD Ryzen 7 6800H (8C / 16T, 3.2 / 4.7GHz, 4MB L2 / 16MB L3)\r\n', '16GB (2x8GB) DDR5 4800MHz (2x SO-DIMM socket, up to 32GB SDRAM)\r\n', '512GB SSD M.2 PCIe PCIE G4X4\r\n', 'NVIDIA® GeForce RTX™ 3060 6GB GDDR6\r\n', '2.72 kg', 'Dark Shadow Grey', '357.26 x 272.11 x 26.90 (mm)', 0),
 (83, 'MacBook Air M1 7GPU 8GB 256GB - Gold', 'laptop32.jpg', '100', 28.490, 18.690, 7, 'macbook', 'M1  8CPU 7GPU\r\n', '8GB', '256GB SSD\r\n', 'M1  8CPU 7GPU\r\n', '1.4 kg', 'Vàng', '304 x 212 x 4.1 mm', 1),
 (84, 'Macbook Air M2 10GPU 8GB 512GB - Midnight', 'laptop33.jpg', '100', 41.990, 32.490, 7, 'macbook', 'M2 8CPU 10GPU\r\n', '8GB\r\n', '512GB', 'M2 8CPU 10GPU\r\n', '1.24 kg', 'Midnight', '30.41 x 21.5 x 1.13 cm', 1);
 
@@ -182,8 +190,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `user_name`, `name`, `email`, `password`, `address`, `sdt`, `avatar`, `is_online`, `last_activity`) VALUES
-(8, 1, 'admin', 'Admin', 'admin@gmail.com', '$2y$10$tp0dlGHCvTmKluJ76Sp7hu2KGHX08P4vG.i1xezRW/75WNZf11.LK', '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', 'be7.jpg', 1, '2023-07-29 03:04:42'),
-(19, 0, 'trolface', 'Tuấn Đẹt', 'trolface@gmail.com', '$2y$10$KnoUgOIwRhZ4qt07O9pSu.sox7AffcwqWy1Sy/hjYR6KOemRbFggG', 'Hồ Chí Minh', '0102030405', 'be7.jpg', 0, '2023-07-29 03:04:32');
+(8, 1, 'admin', 'Admin', 'admin@gmail.com', '$2y$10$tp0dlGHCvTmKluJ76Sp7hu2KGHX08P4vG.i1xezRW/75WNZf11.LK', '168/6 Trường Chinh, Phường 13, quận Tân Bình, TP Hồ Chí Minh', '0901284412', 'be7.jpg', 1, '2023-07-30 13:54:00'),
+(19, 0, 'trolface', 'tuấn đạt', 'trolface@gmail.com', '$2y$10$RbcGNALlRJVR53SXGtpDuOQ1E2IGdPlqcEd0Uh1BKh/5050E9LdYu', 'Hồ Chí Minh', '0102030405', 'be7.jpg', 0, '2023-07-30 11:16:29'),
+(20, 0, 'shuna', 'Tuấn Đạt', 'shuna@gmail.com', '$2y$10$oLW4mHgYUcd08woABJNpEOFc5LncxZHGCgHOVn535FFwAZgxP10S6', 'Tân Bình, Hồ Chí Minh', '01020304', 'be7.jpg', 0, '2023-07-30 13:07:24');
 
 --
 -- Indexes for dumped tables
@@ -238,19 +247,19 @@ ALTER TABLE `hang`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
