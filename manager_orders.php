@@ -114,6 +114,9 @@ $result = mysqli_query($conn, $sql);
                                     <button type="submit" class="order_browsing"><a href="status_orders2.php?id=<?php echo $ord['id'] ?>">Hoàn tác</a></button>
                                 <?php } ?>
                             </th>
+                            <td class="button_fdd">
+                                <button class="button_delete"><a href="remove_order.php?id=<?php echo $ord['id'] ?>">Xóa</a></button>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
