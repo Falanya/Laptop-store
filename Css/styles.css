@@ -1731,6 +1731,12 @@ html body::-webkit-scrollbar-thumb {
     align-items: center;
 }
 
+.error_profile_u {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*Ket thuc profile_users*/
 
 /*Xu li changer_password*/

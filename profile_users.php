@@ -6,6 +6,18 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
+// Kiểm tra cú pháp email
+function is_valid_email($email)
+{
+    return preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email);
+}
+
+// Kiểm tra cú pháp số điện thoại
+function is_valid_phone($phone)
+{
+    return preg_match("/^[0-9]{10,11}$/", $phone);
+}
+
 if (isset($_POST['user_name'])) {
     $user_name = $_POST['user_name'];
     $name = $_POST['name'];
@@ -13,17 +25,28 @@ if (isset($_POST['user_name'])) {
     $email = $_POST['email'];
     $address = $_POST['address'];
 
-    $query = mysqli_query($conn, "UPDATE users SET name = '$name', sdt = '$sdt', email = '$email', address = '$address' WHERE user_name = '$user_name'");
-    if ($query) {
-        $profile_success = "Đã thay đổi thông tin";
-        //Cập nhật thông tin mới của người dùng vào phiên SESSION
-        $_SESSION['user']['name'] = $name;
-        $_SESSION['user']['sdt'] = $sdt;
-        $_SESSION['user']['email'] = $email;
-        $_SESSION['user']['address'] = $address;
-        header('location: home.php');
-    } else {
-        $profile_error = "Lỗi thay đổi thông tin";
+    // Kiểm tra cú pháp email
+    if (!is_valid_email($email)) {
+        $err['email'] = 'Email không hợp lệ, vui lòng nhập lại đúng định dạng';
+    }
+
+    // Kiểm tra cú pháp số điện thoại
+    if (!is_valid_phone($sdt)) {
+        $err['sdt'] = 'Số điện thoại không hợp lệ, vui lòng nhập lại';
+    }
+    if (empty($err)) {
+        $query = mysqli_query($conn, "UPDATE users SET name = '$name', sdt = '$sdt', email = '$email', address = '$address' WHERE user_name = '$user_name'");
+        if ($query) {
+            $profile_success = "Đã thay đổi thông tin";
+            //Cập nhật thông tin mới của người dùng vào phiên SESSION
+            $_SESSION['user']['name'] = $name;
+            $_SESSION['user']['sdt'] = $sdt;
+            $_SESSION['user']['email'] = $email;
+            $_SESSION['user']['address'] = $address;
+            header('location: home.php');
+        } else {
+            $profile_error = "Lỗi thay đổi thông tin";
+        }
     }
 }
 
@@ -98,6 +121,10 @@ if (isset($_POST['user_name'])) {
                             </div>
                             <div class="button_profile">
                                 <button style="cursor: pointer;" type="submit" name="submit">Lưu thông tin</button>
+                            </div>
+                            <div class="error_profile_u">
+                                <span style="text-align: center;"><?php echo (isset($err['sdt'])) ? $err['sdt'] : ''; ?></span>
+                                <span><?php echo (isset($err['email'])) ? $err['email'] : ''; ?></span>
                             </div>
                         </form>
                     </div>
