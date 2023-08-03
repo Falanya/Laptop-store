@@ -1,4 +1,5 @@
 <?php
+//Chưa hoàn thành
 include './setting/connect.php';
 
 if (isset($_GET['id'])) {
