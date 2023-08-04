@@ -4,29 +4,6 @@ include './setting/connect.php';
 $id_hang = $_GET['id_hang'];
 
 // Chuẩn bị và thực thi truy vấn cơ sở dữ liệu
-$sql = "SELECT * FROM product WHERE id_hang = '$id_hang' Order By id DESC";
-$result = $conn->query($sql);
-
-// Kiểm tra xem có sản phẩm nào được tìm thấy không
-if ($result->num_rows > 0) {
-    // Có sản phẩm được tìm thấy, hiển thị chúng bằng HTML
-    while ($row = $result->fetch_assoc()) {
-        // $productId = $row['id'];
-        // $productName = $row['name'];
-        // $productPrice = $row['price'];
-
-        // // Hiển thị thông tin sản phẩm bằng HTML
-        // echo "<div>";
-        // echo "<h3>$productName</h3>";
-        // echo "<p>Giá: $productPrice</p>";
-        // // Thêm thêm chi tiết sản phẩm nếu cần
-        // echo "</div>";
-    }
-} else {
-    // Không có sản phẩm nào được tìm thấy cho danh mục đã chọn
-    echo "<p>Không tìm thấy sản phẩm nào trong danh mục này.</p>";
-}
-
 $sql = "SELECT * FROM product WHERE id_hang = '$id_hang' ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
 
